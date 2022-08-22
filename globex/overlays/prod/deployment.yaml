@@ -1,0 +1,7 @@
+spec:
+  replicas: 3
+  template:
+    spec:
+      containers:
+        - name: globex
+          image: lrochette/globex:1.6.56
