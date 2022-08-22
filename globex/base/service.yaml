@@ -2,13 +2,13 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: globex-dev
-  name: globex-dev
+    app: globex
+  name: globex
 spec:
   ports:
   - port: 80
     protocol: TCP
     targetPort: 8080
   selector:
-    app: globex-dev
+    app: globex
   type: ClusterIP
