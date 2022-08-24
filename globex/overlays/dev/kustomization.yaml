@@ -5,4 +5,4 @@ resources:
 namespace: dev
 patchesStrategicMerge:
 - deployment.yaml
-- service.yaml
+- ingress.yaml
