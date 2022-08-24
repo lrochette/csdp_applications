@@ -9,9 +9,3 @@ spec:
       http:
         paths:
           - path: /globex-prod
-            backend:
-              service:
-                name: globex
-                port:
-                  number: 80
-            pathType: ImplementationSpecific

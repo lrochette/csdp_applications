@@ -3,6 +3,8 @@ kind: Kustomization
 resources:
 - ../../base
 namespace: prod
+nameSuffix: "-prod"
+
 patchesStrategicMerge:
 - ingress.yaml
 - deployment.yaml
