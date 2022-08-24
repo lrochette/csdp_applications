@@ -5,4 +5,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: lr2.support.cf-cd.com
+    - host: lrcsdp.support.cf-cd.com
+      http:
+        paths:
+          - path: /globex-prod
