@@ -2,7 +2,7 @@
 a global repo for all app deployments
 
 # dev
-in the in-cluster k8s cluster
+in the in-cluster k8s cluster in dev namespace
 
-# staging
-the lr2 cluster
+# production
+in the in-cluster k8s cluster in prod namespace
