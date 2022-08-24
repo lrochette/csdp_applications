@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: globex
+  name: globex-prod
 spec:
   ingressClassName: nginx
   rules:
