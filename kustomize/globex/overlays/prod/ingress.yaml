@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: globex-prod
+  name: globex
 spec:
   ingressClassName: nginx
   rules:
@@ -9,3 +9,9 @@ spec:
       http:
         paths:
           - path: /globex-prod
+            backend:
+              service:
+                name: globex
+                port:
+                  number: 80
+            pathType: ImplementationSpecific
