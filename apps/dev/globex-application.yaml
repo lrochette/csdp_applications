@@ -11,7 +11,7 @@ spec:
   destination:
     namespace: dev
     name: in-cluster
-  project: globex-dev
+  project: dev
   source:
     path: ./kustomize/globex/overlays/dev
     repoURL: https://github.com/lrochette/csdp_applications.git
