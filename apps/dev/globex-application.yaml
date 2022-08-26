@@ -10,7 +10,7 @@ metadata:
 spec:
   destination:
     namespace: dev
-    name: in-cluster
+    server: https://kubernetes.default.svc
   project: dev
   source:
     path: ./kustomize/globex/overlays/dev
