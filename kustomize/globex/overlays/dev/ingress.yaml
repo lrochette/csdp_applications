@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   name: globex
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /globex/$2
+    nginx.ingress.kubernetes.io/rewrite-target: globex/$2
 spec:
   ingressClassName: nginx
   rules:
