@@ -8,7 +8,7 @@ spec:
     - host: lrcsdp.support.cf-cd.com
       http:
         paths:
-          - path: /globex-dev
+          - path: /globex
             backend:
               service:
                 name: globex
