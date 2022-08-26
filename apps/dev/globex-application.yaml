@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: globex-dev
-  namespace: dev
+  namespace: csdp
   labels:
     app: globex
   finalizers:
