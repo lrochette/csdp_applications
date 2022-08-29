@@ -13,8 +13,8 @@ spec:
     server: https://kubernetes.default.svc
   project: dev
   source:
-    # path: ./examples/canary/
-    path: ./examples/analysis/
+    path: ./examples/canary/
+    #path: ./examples/analysis/
     repoURL: https://github.com/lrochette/rollouts-demo.git
     targetRevision: master
   syncPolicy:
