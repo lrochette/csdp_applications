@@ -1,0 +1,10 @@
+# htpasswd -c auth prometheus-dev
+# kubectl create secret generic basic-auth --from-file=auth
+apiVersion: v1
+data:
+  auth: c29tZTpzZWNyZXQ=
+kind: Secret
+metadata:
+  name: basic-auth
+  namespace: monitoring
+type: Opaque

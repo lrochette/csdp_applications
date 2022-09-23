@@ -1,0 +1,18 @@
+# kustomize edit set image quay.io/codefresh_sa/express-microservice:test
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- serviceAccount.yaml
+- ../../base
+- serviceMonitor.yaml
+
+patches:
+# user: prometheus-dev
+- target:
+    version: v1
+    kind: Secret
+    name: basic-auth
+  patch: |-
+    - op: replace
+      path: /data/auth
+      value: YWRtaW46JGFwcjEkTHd1VEszVmokSUxuQ2hkdUI5QWt6Ri81YWdYdkhaLgo=

@@ -1,0 +1,139 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- grafana-pvc.yaml
+- grafana-svc.yaml
+- grafana-ingress.yaml
+- prometheus-basic-auth.yaml
+- prometheus-ingress.yaml
+- github.com/prometheus-operator/kube-prometheus?ref=v0.10.0
+
+patches:
+# Tell argocd to replace this CRD instead of apply to avoid annotation limit error
+- target:
+    group: apiextensions.k8s.io
+    version: v1
+    kind: CustomResourceDefinition
+    name: prometheuses.monitoring.coreos.com
+  # https://github.com/argoproj/argo-cd/issues/2730
+  # https://github.com/kubernetes-sigs/kustomize/issues/1439#issuecomment-520614831
+  patch: |-
+    - op: add
+      path: /metadata/annotations/argocd.argoproj.io~1sync-options
+      value: Replace=true
+# update the grafana.ini to accept serving on subpath
+- target:
+    version: v1
+    kind: Secret
+    name: grafana-config
+  patch: |-
+    - op: replace
+      path: /stringData/grafana.ini
+      value: |
+        [date_formats]
+        default_timezone = UTC
+
+        [server]
+        root_url = https://localhost/grafana
+        serve_from_sub_path = true
+# Add the PVC to the grafana deployment
+- target:
+    group: apps
+    version: v1
+    kind: Deployment
+    name: grafana
+  patch: |-
+    - op: replace
+      path: /spec/template/spec/volumes/0
+      value:
+        name: grafana-storage
+        persistentVolumeClaim:
+          claimName: grafana-pvc
+- target:
+    group: monitoring.coreos.com
+    version: v1
+    kind: Prometheus
+    name: k8s
+  patch: |-
+    - op: add
+      path: /spec/externalUrl
+      value: http://localhost:9090/prometheus
+    - op: add
+      path: /spec/routePrefix
+      value: /
+
+# patchesStrategicMerge:
+# - |-
+#   apiVersion: v1
+#   kind: Secret
+#   metadata:
+#     name: grafana-config
+#     namespace: monitoring
+#   stringData:
+#     grafana.ini: |
+#       [date_formats]
+#       default_timezone = UTC
+
+#       [server]
+#       root_url = https://localhost/grafana
+#       serve_from_sub_path = true
+
+# apiVersion: v1
+# kind: Secret
+# metadata:
+#   labels:
+#     app.kubernetes.io/component: grafana
+#     app.kubernetes.io/name: grafana
+#     app.kubernetes.io/part-of: kube-prometheus
+#     app.kubernetes.io/version: 8.3.3
+#   name: grafana-config
+#   namespace: monitoring
+# stringData:
+#   grafana.ini: |
+#     [date_formats]
+#     default_timezone = UTC
+# type: Opaque
+
+
+
+# Replace the emptydir volume with a pvc
+# patchesJSON6902:
+# - target:
+#     group: apps
+#     version: v1
+#     kind: Deployment
+#     name: grafana
+#   patch: |-
+#     - op: replace
+#       path: /spec/template/spec/volumes/0
+#       value:
+#         name: grafana-pv
+#         persistentVolumeClaim:
+#           claimName: grafana-pvc
+
+# Alternatively can patch like this:
+# patchesStrategicMerge:
+# - |-
+#   apiVersion: apps/v1
+#   kind: Deployment
+#   metadata:
+#     name: grafana
+#     namespace: monitoring
+#   spec:
+#     template:
+#       spec:
+#         volumes:
+#         - name: grafana-pv
+#           persistentVolumeClaim:
+#             claimName: grafana-pvc
+
+# We are changing this line to this
+#       volumes:
+#       - emptyDir: {}
+#         name: grafana-storage
+# -->
+#       volumes:
+#         - name: grafana-pv
+#           persistentVolumeClaim:
+#             claimName: grafana-pvc
