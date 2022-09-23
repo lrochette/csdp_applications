@@ -2,13 +2,13 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: workflow-controller-metrics
-  namespace: csdp-salesdemo-dev
+  namespace: csdp
 spec:
   endpoints:
     - port: metrics
   namespaceSelector:
     matchNames:
-      - csdp-salesdemo-dev
+      - csdp
   selector:
     matchLabels:
       app: workflow-controller
@@ -17,7 +17,7 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: argocd-metrics
-  namespace: csdp-salesdemo-dev
+  namespace: csdp
   labels:
     release: prometheus-operator
 spec:
@@ -31,7 +31,7 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: argocd-server-metrics
-  namespace: csdp-salesdemo-dev
+  namespace: csdp
   labels:
     release: prometheus-operator
 spec:
@@ -45,7 +45,7 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: argocd-repo-server-metrics
-  namespace: csdp-salesdemo-dev
+  namespace: csdp
   labels:
     release: prometheus-operator
 spec:
@@ -59,7 +59,7 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: argo-rollouts-metrics
-  namespace: csdp-salesdemo-dev
+  namespace: csdp
   labels:
     release: prometheus-operator
 spec:
