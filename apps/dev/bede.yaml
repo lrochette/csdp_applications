@@ -38,6 +38,10 @@ spec:
             db:
               name: '{{db_name}}'
               host: '{{db_host}}'
+            container:
+              repository: lrochette
+              imageName: globex
+
       destination:
         server: '{{server}}'
         namespace: '{{namespace}}'
