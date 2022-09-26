@@ -16,7 +16,8 @@ spec:
                 server: https://kubernetes.default.svc
                 db_name: 'test.name'
                 db_host: 'test.host'
-                ingress_domain: 'test.domain'
+                #ingress_domain: 'test.domain'
+                ingress_domain: "support.cf-cd.com"
                 namespace: 'dashboard-test'
   template:
     metadata:
