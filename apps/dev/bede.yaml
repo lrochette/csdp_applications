@@ -1,39 +1,42 @@
 apiVersion: argoproj.io/v1alpha1
-kind: Application
+kind: ApplicationSet
 metadata:
-  name: test
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io/foreground
+  name: bede-devopsdashboard
 spec:
-  project: default
-  source:
-    path: ./deploy/helm/apps
-    repoURL: https://github.com/andrewmetcalfbede/csdptest.git
-    targetRevision: HEAD
-    helm:
-      values: |-
-        app:
-          name: appname
-        ingress:
-          host: some.host
-        db:
-          name: some_name
-          host: some_host
-      valueFiles:
-      valueFiles:
-        - values-bede-devopsdashboard-api.yaml
-        - values.yaml
-  destination:
-    name: in-cluster
-    namespace: test
-  syncPolicy:
-    automated:
-      prune: false
-      selfHeal: false
-    syncOptions:
-      - PrunePropagationPolicy=foreground
-      - Replace=false
-      - PruneLast=false
-      - Validate=true
-      - CreateNamespace=false
-      - ApplyOutOfSyncOnly=false
+  generators:
+  - matrix:
+      generators:
+        - list:
+            elements:
+            - dash_component: api
+            - dash_component: web
+        - list:
+            elements:
+              - cluster: in-cluster
+                server: https://kubernetes.default.svc
+                db_name: 'test.name'
+                db_host: 'test.host'
+                ingress_domain: 'test.domain'
+                namespace: 'dashboard-test'
+  template:
+    metadata:
+      name: '{{cluster}}-bede-devopsdashboard-{{dash_component}}'
+    spec:
+      project: "default"
+      source:
+        repoURL: https://github.com/andrewmetcalfbede/csdptest/
+        targetRevision: main
+        path: deploy/helm/apps
+        helm:
+          valueFiles:
+            - values-{{dash_component}}.yaml
+            - values.yaml
+          values: |-
+            ingress:
+              domain: '{{ingress_domain}}'
+            db:
+              name: '{{db_name}}'
+              host: '{{db_host}}'
+      destination:
+        server: '{{server}}'
+        namespace: '{{namespace}}'
