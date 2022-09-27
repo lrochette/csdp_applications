@@ -6,7 +6,8 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - http:
+  - host: lrcsdp.support.cf-cd.com
+    http:
       paths:
       - backend:
           service:
