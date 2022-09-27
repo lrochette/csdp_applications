@@ -8,7 +8,7 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
 spec:
   # Project description
-  description: Deployment(s) of 'express' app
+  description: Deployment(s) of prometheus stuff
 
   # Allow manifests to deploy from any Git repos
   sourceRepos:
