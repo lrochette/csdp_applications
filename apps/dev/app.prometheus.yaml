@@ -10,7 +10,7 @@ metadata:
 spec:
   destination:
     namespace: prometheus
-    name: in-cluster
+    server: https://kubernetes.default.svc
   project: monitoring
   source:
     path: ./kustomize/prometheus/overlays/dev
