@@ -27,7 +27,6 @@ spec:
       source:
         repoURL: https://github.com/lrochette/bedecsdptest/
         targetRevision: main
-          # refs/heads/feature/testApp
         path: deploy.main/helm/apps
         helm:
           valueFiles:
