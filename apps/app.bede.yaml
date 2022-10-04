@@ -26,8 +26,8 @@ spec:
       project: "default"
       source:
         repoURL: https://github.com/lrochette/bedecsdptest/
-        targetRevision: main
-        path: deploy.main/helm/apps
+        targetRevision: 'HEAD'
+        path: tree/br1/deploy/helm/apps
         helm:
           valueFiles:
             - values-{{dash_component}}.yaml
