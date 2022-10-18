@@ -16,4 +16,4 @@ spec:
                 name: color
                 port:
                   number: 80
-            pathType: ImplementationSpecific
+            pathType: Prefix
