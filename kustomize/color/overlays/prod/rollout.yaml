@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: color
-        image: lrochette/color:yellow
+        image: lrochette/color:purple
         imagePullPolicy: Always
         ports:
         - name: http
@@ -30,7 +30,7 @@ spec:
       canaryService: color-preview
       steps:
       - setWeight: 20
-      - pause: {duration: 30}
+      - pause: {} # {duration: 30}
       - setWeight: 40
       - pause: {duration: 30}
       - setWeight: 60
