@@ -6,8 +6,10 @@ metadata:
   name: color
 spec:
   ports:
-  - port: 8080
-    protocol: TCP
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 8080     
   selector:
     app: color
   type: ClusterIP
