@@ -10,7 +10,8 @@ metadata:
 spec:
   destination:
     namespace: prod
-    server: https://9EFB8399DE9A817EC221411CDCB1620C.gr7.us-east-1.eks.amazonaws.com
+    name: lr3
+    #server: https://9EFB8399DE9A817EC221411CDCB1620C.gr7.us-east-1.eks.amazonaws.com
   project: prod
   source:
     path: ./kustomize/color/overlays/prod
