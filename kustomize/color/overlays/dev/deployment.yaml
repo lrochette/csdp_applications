@@ -16,8 +16,8 @@ spec:
         app: color
     spec:
       containers:
-      - name: color
-        image: lrochette/color:yellow
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 8080
+        - name: color
+          image: lrochette/color:1c75c85
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
