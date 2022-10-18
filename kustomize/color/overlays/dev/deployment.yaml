@@ -10,4 +10,4 @@ spec:
     spec:
       containers:
         - name: color
-          image: lrochette/color:yellow
+          image: lrochette/color:d85700a
