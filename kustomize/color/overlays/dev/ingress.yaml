@@ -15,5 +15,5 @@ spec:
               service:
                 name: color
                 port:
-                  number: 8080
+                  number: 80
             pathType: ImplementationSpecific
