@@ -5,6 +5,6 @@ resources:
 - ingress.yaml
 - ingress-preview.yaml
 - service-preview.yaml
-# - rollout.yaml
-- deployment.yaml
+- rollout.yaml
+# - deployment.yaml
 namespace: prod
