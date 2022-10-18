@@ -3,7 +3,7 @@ kind: Kustomization
 resources:
 - ../../base
 - ingress.yaml
+- ingress-preview.yaml
+- service-preview.yaml
+- rollout.yaml
 namespace: prod
-
-patchesStrategicMerge:
-- deployment.yaml
