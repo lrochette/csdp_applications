@@ -1,10 +1,10 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: canary-demo
+  name: color
   namespace: csdp
   labels:
-    app: canary-demo
+    app: color
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
@@ -13,12 +13,12 @@ spec:
     server: https://kubernetes.default.svc
   project: dev
   source:
-    path: ./examples/canary/
-    repoURL: https://github.com/lrochette/rollouts-demo.git
+    path: ./kustomize/color/overlays/dev
+    repoURL: https://github.com/lrochette/csdp_applications.git
     targetRevision: master
   syncPolicy:
     syncOptions:
     - createNamespace=true
-    # automated:
-    #   prune: true
-    #   selfHeal: true
+    automated:
+      prune: true
+      selfHeal: true

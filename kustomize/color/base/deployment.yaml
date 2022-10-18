@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: color
+  name: color
+spec:
+  revisionHistoryLimit: 1
+  replicas: xxx
+  selector:
+    matchLabels:
+      app: color
+  template:
+    metadata:
+      labels:
+        app: color
+    spec:
+      containers:
+      - name: color
+        image: lrochette/color:xxx
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080

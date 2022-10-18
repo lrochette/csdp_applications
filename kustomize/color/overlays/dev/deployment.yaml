@@ -1,0 +1,13 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: color
+  name: color
+spec:
+  replicas: 2
+  template:
+    spec:
+      containers:
+        - name: color
+          image: lrochette/color:yellow
