@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: color
-          image: lrochette/color:2af73b1
+          image: lrochette/color:01b0b29
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
