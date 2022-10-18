@@ -1,0 +1,135 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: express-rollback
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: express-rollback
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - pods
+    verbs:
+      - get
+      - watch
+      - patch
+  - apiGroups:
+      - ""
+    resources:
+      - pods/log
+    verbs:
+      - get
+      - watch
+  - apiGroups:
+      - ""
+    resources:
+      - secrets
+    verbs:
+      - get
+# These (below) are needed for the rollback (haven't tried removing the permissions above)
+  - apiGroups:
+      - "apps"
+    resources:
+      - replicasets
+    verbs:
+      - get
+      - list
+  - apiGroups:
+      - "argoproj.io"
+    resources:
+      - rollouts
+      - applications
+    verbs:
+      - get
+      - list
+      - patch
+      - update
+      - watch
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: express-rollback
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: express-rollback
+subjects:
+  - kind: ServiceAccount
+    name: express-rollback
+---
+# Make this job part of the argocd application -- the annotations _should_ tell it when to run
+# https://argo-cd.readthedocs.io/en/stable/user-guide/resource_hooks/
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: express-rollout-fail
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+spec:
+  template:
+    spec:
+      serviceAccountName: express-rollback
+      containers:
+      - name: undo-rollout
+        image: quay.io/codefresh_sa/kubectl-rollouts:latest
+        env:
+          #/spec/template/containers/0/env/0/value
+          # express-app-bg
+          - name: ARGOCD_APP_NAME
+            value: express-app
+          - name: ARGO_ROLLOUT_NAME
+            value: express-microservice
+        command:
+          - /bin/bash
+          - -c
+          - |
+            # Loop until the deployment has completed (Healthy or Degraded)
+            while : ; do
+              STATUS=$(kubectl get apps ${ARGOCD_APP_NAME} -ojsonpath='{.status.health.status}');
+
+              # If the app doesn't exist, exit out
+              test -z "${STATUS}" && echo "App ${ARGOCD_APP_NAME} not found" && exit 1
+              # If the app is healthy, exit out
+              test "${STATUS}" == "Healthy" && echo "App ${ARGOCD_APP_NAME} healthy" && exit 0;
+
+              # If the app has failed, rollback
+              test "${STATUS}" == "Degraded" && echo "Rolling back ${ARGO_ROLLOUT_NAME} (app: ${ARGOCD_APP_NAME})" && kubectl-argo-rollouts undo ${ARGO_ROLLOUT_NAME};
+
+              sleep 10
+            done
+      restartPolicy: Never
+  backoffLimit: 2
+# https://argo-cd.readthedocs.io/en/stable/operator-manual/health/#way-1-define-a-custom-health-check-in-argocd-cm-configmap
+# Health statuses
+# Healthy - the resource is healthy
+# Progressing - the resource is not healthy yet but still making progress and might be healthy soon
+# Degraded - the resource is degraded
+# Suspended - the resource is suspended and waiting for some external event to resume (e.g. suspended CronJob or paused Deployment)
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: express-sync-fail
+  annotations:
+    argocd.argoproj.io/hook: SyncFail
+spec:
+  template:
+    spec:
+      serviceAccountName: express-rollback
+      containers:
+      - name: undo-rollout
+        image: quay.io/codefresh_sa/kubectl-rollouts:latest
+        env:
+          - name: ARGO_ROLLOUT_NAME
+            value: express-microservice
+        command:
+          - /bin/bash
+          - -c
+          - |
+            echo "Rolling back ${ARGO_ROLLOUT_NAME} (app: ${ARGOCD_APP_NAME})" && kubectl-argo-rollouts undo ${ARGO_ROLLOUT_NAME};
+      restartPolicy: Never
+  backoffLimit: 2

@@ -1,0 +1,39 @@
+# https://argoproj.github.io/argo-rollouts/getting-started/nginx/
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: express-stable-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  rules:
+  - http:
+      paths:
+      - backend:
+          service:
+            name: express-active
+            port:
+              number: 3000
+        path: /express
+        pathType: ImplementationSpecific
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: express-preview-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  rules:
+  - http:
+      paths:
+      - backend:
+          service:
+            name: express-preview
+            port:
+              number: 3000
+        path: /express-preview
+        pathType: ImplementationSpecific
+

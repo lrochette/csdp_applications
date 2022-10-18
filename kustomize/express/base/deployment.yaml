@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: express-microservice
+  labels:
+    app: express-microservice
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: express-microservice
+  template:
+    metadata:
+      labels:
+        app: express-microservice
+    spec:
+      containers:
+      - name: express-microservice
+        image: quay.io/codefresh_sa/express-microservice:3c23228
+        ports:
+        - containerPort: 3000
+      imagePullSecrets:
+      - name: quay-regcred

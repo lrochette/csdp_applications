@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: express-app-bg
+  labels:
+    app: express-bg
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: csdp # temporarily set to Runtime namespace, CR-10565
+    name: in-cluster
+  project: dev
+  source:
+    path: ./kustomize/express-blue-green/overlays/dev
+    repoURL: https://github.com/lrochette/csdp_applications.git
+    targetRevision: main
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+      - PrunePropagationPolicy=foreground
+    automated:
+      prune: true

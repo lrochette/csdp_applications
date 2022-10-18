@@ -1,0 +1,40 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: express-microservice
+spec:
+  replicas: 4
+  # revisionHistoryLimit>2 not supported right now
+  revisionHistoryLimit: 2 
+  selector:
+    matchLabels:
+      app: express-microservice
+  template:
+    metadata:
+      labels:
+        app: express-microservice
+    spec:
+      containers:
+        - name: express-microservice
+          # 3c23228 9ccb236
+          image: quay.io/codefresh_sa/express-microservice:9ccb236
+          ports:
+            - containerPort: 3000
+      imagePullSecrets:
+      - name: quay-regcred
+  minReadySeconds: 30
+  strategy:
+    canary:
+#       stableService: express-active
+#       canaryService: express-preview
+#       trafficRouting:
+#         nginx:
+#           stableIngress: express-stable-ingress
+      analysis:
+        templates:
+        - templateName: pass-always
+        - templateName: mixed-tests
+        startingStep: 1
+      steps:
+        - setWeight: 25
+        - pause: {duration: 1m}

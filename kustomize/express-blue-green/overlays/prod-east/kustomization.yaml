@@ -1,0 +1,75 @@
+# kustomize edit set image quay.io/codefresh_sa/express-microservice:test
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- ../../../express/overlays/prod-east/
+#- ../../base
+
+#namespace: express-blugreen
+nameSuffix: -bg
+
+commonLabels:
+    app: express-microservice-bg
+
+patches:
+- target:
+    version: v1alpha1
+    kind: Rollout
+    name: express-microservice
+  patch: |-
+    - op: replace
+      path: /spec/strategy
+      value:
+        blueGreen:
+          activeService: express-active-bg
+          previewService: express-preview-bg
+          prePromotionAnalysis:
+            templates:
+              - templateName: pass-always-bg
+              - templateName: mixed-tests-bg
+    - op: replace
+      path: /spec/selector/matchLabels/app
+      value: express-microservice-bg
+    - op: replace
+      path: /spec/template/metadata/labels/app
+      value: express-microservice-bg
+
+- target:
+    group: networking.k8s.io
+    version: v1
+    kind: Ingress
+    name: express-stable-ingress
+  patch: |
+    - op: replace
+      path: /spec/rules/0/http/paths/0/path
+      value: /express-bg
+- target:
+    group: networking.k8s.io
+    version: v1
+    kind: Ingress
+    name: express-preview-ingress
+  patch: |
+    - op: replace
+      path: /spec/rules/0/http/paths/0/path
+      value: /express-preview-bg
+- target:
+    group: batch
+    version: v1
+    kind: Job
+    name: express-rollout-fail
+  patch: |
+    - op: replace
+      path: /spec/template/spec/containers/0/env/0/value
+      value: express-app-bg
+    - op: replace
+      path: /spec/template/spec/containers/0/env/1/value
+      value: express-microservice-bg
+- target:
+    group: batch
+    version: v1
+    kind: Job
+    name: express-sync-fail
+  patch: |
+    - op: replace
+      path: /spec/template/spec/containers/0/env/0/value
+      value: express-microservice-bg

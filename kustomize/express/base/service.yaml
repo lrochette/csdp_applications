@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: express-active
+spec:
+  ports:
+  - port: 80
+    targetPort: 3000
+  selector:
+    app: express-microservice
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: express-preview
+spec:
+  ports:
+  - port: 80
+    targetPort: 3000
+  selector:
+    app: express-microservice

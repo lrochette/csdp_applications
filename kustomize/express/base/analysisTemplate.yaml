@@ -1,0 +1,66 @@
+# 2 AnalysisTemplates
+
+---
+kind: AnalysisTemplate
+apiVersion: argoproj.io/v1alpha1
+metadata:
+  name: mixed-tests
+spec:
+  metrics:
+  - name: pass-2
+    count: 2
+    interval: 5s
+    failureLimit: 1
+    provider:
+      job:
+        spec:
+          template:
+            spec:
+              containers:
+              - name: sleep-pass
+                image: alpine:3.8
+                command: [sh, -c]
+                args: [exit 0]
+              restartPolicy: Never
+          backoffLimit: 0
+  - name: random-fail
+    count: 1
+    interval: 5s
+    failureLimit: 0
+    provider:
+      job:
+        spec:
+          template:
+            spec:
+              containers:
+              - name: sleep-fail
+                image: alpine:3.8
+                command: [sh, -c]
+                args: [ "test $(( RANDOM%2 )) == 0" ]
+#                args: [FLIP=$(($(($RANDOM%10))%2)) && exit $FLIP]
+              restartPolicy: Never
+          backoffLimit: 0
+
+---
+kind: AnalysisTemplate
+apiVersion: argoproj.io/v1alpha1
+metadata:
+  name: pass-always
+spec:
+  metrics:
+  - name: pass-5
+    count: 5
+    interval: 5s
+    failureLimit: 1
+    provider:
+      job:
+        spec:
+          template:
+            spec:
+              containers:
+              - name: sleep
+                image: alpine:3.8
+                command: [sh, -c]
+                args: [exit 0]
+              restartPolicy: Never
+          backoffLimit: 0
