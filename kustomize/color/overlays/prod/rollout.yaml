@@ -27,7 +27,6 @@ spec:
             cpu: 5m
   strategy:
     canary:
-      stableService: color
       canaryService: color-preview
       steps:
       - setWeight: 20
