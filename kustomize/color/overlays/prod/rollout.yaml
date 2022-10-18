@@ -14,7 +14,7 @@ spec:
         app: color
     spec:
       containers:
-      - name: ccolor
+      - name: color
         image: lrochette/color:d85700a
         imagePullPolicy: Always
         ports:
@@ -24,6 +24,7 @@ spec:
 
   strategy:
     canary:
+      stableService: color
       canaryService: color-preview
       steps:
       - setWeight: 20
