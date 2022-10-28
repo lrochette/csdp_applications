@@ -6,7 +6,7 @@ resources:
 - ../../base
 - serviceMonitor.yaml
 
-patches:
+#patches:
 # user: prometheus-dev
 # - target:
 #     version: v1
