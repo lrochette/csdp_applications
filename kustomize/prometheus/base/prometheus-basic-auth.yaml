@@ -2,7 +2,7 @@
 # kubectl create secret generic basic-auth --from-file=auth
 apiVersion: v1
 data:
-  auth: c29tZTpzZWNyZXQ=
+  auth: cYWRtaW4=
 kind: Secret
 metadata:
   name: basic-auth
