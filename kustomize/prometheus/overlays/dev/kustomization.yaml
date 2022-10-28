@@ -8,11 +8,11 @@ resources:
 
 patches:
 # user: prometheus-dev
-- target:
-    version: v1
-    kind: Secret
-    name: basic-auth
-  patch: |-
-    - op: replace
-      path: /data/auth
-      value: YWRtaW46JGFwcjEkTHd1VEszVmokSUxuQ2hkdUI5QWt6Ri81YWdYdkhaLgo=
+# - target:
+#     version: v1
+#     kind: Secret
+#     name: basic-auth
+#   patch: |-
+#     - op: replace
+#       path: /data/auth
+#       value: YWRtaW46JGFwcjEkTHd1VEszVmokSUxuQ2hkdUI5QWt6Ri81YWdYdkhaLgo=
