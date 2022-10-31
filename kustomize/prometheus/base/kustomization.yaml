@@ -35,9 +35,10 @@ patches:
         default_timezone = UTC
 
         [server]
-#root_url = https://localhost/grafana
         root_url = https://lrcsdp.support.cf-cd.com/grafana
         serve_from_sub_path = true
+#root_url = https://localhost/grafana
+
 # Add the PVC to the grafana deployment
 - target:
     group: apps
@@ -59,11 +60,11 @@ patches:
   patch: |-
     - op: add
       path: /spec/externalUrl
-# value: http://localhost:9090/prometheus
       value: http://lrcsdp.support.cf-cd.com/prometheus
     - op: add
       path: /spec/routePrefix
       value: /
+# value: http://localhost:9090/prometheus
 
 # patchesStrategicMerge:
 # - |-
