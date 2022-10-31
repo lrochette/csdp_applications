@@ -7,7 +7,7 @@ resources:
 - grafana-ingress.yaml
 - prometheus-basic-auth.yaml
 - prometheus-ingress.yaml
-- github.com/prometheus-operator/kube-prometheus?ref=v0.10.0
+- github.com/prometheus-operator/kube-prometheus?ref=v0.11.0
 
 patches:
 # Tell argocd to replace this CRD instead of apply to avoid annotation limit error
@@ -35,7 +35,8 @@ patches:
         default_timezone = UTC
 
         [server]
-        root_url = https://localhost/grafana
+#root_url = https://localhost/grafana
+        root_url = https://lrcsdp.support.cf-cd.com/grafana
         serve_from_sub_path = true
 # Add the PVC to the grafana deployment
 - target:
@@ -58,7 +59,8 @@ patches:
   patch: |-
     - op: add
       path: /spec/externalUrl
-      value: http://localhost:9090/prometheus
+# value: http://localhost:9090/prometheus
+      value: http://lrcsdp.support.cf-cd.com/prometheus
     - op: add
       path: /spec/routePrefix
       value: /
