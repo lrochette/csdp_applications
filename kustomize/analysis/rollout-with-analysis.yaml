@@ -1,0 +1,48 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: canary-analysis
+spec:
+  replicas: 5
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: canary-analysis
+  template:
+    metadata:
+      labels:
+        app: canary-analysis
+    spec:
+      containers:
+      - name: canary-analysis
+        #image: argoproj/rollouts-demo:red
+        #image: argoproj/rollouts-demo:orange
+        #image: argoproj/rollouts-demo:yellow
+        image: argoproj/rollouts-demo:green
+        #image: argoproj/rollouts-demo:blue
+        #image: argoproj/rollouts-demo:purple
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 5m
+            memory: 32Mi
+  strategy:
+    canary:
+      analysis:
+        templates:
+        - templateName: success-rate
+        args:
+        - name: ingress
+          value: canary-analysis
+      canaryService: canary-analysis-preview
+      steps:
+      - setWeight: 40
+      - pause: {duration: 30}
+      - setWeight: 60
+      - pause: {duration: 30}
+      - setWeight: 80
+      - pause: {duration: 30}

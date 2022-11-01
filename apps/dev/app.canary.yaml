@@ -13,8 +13,8 @@ spec:
     server: https://kubernetes.default.svc
   project: dev
   source:
-    path: ./examples/canary/
-    repoURL: https://github.com/lrochette/rollouts-demo.git
+    path: ./kustomize/canary/
+    repoURL: https://github.com/lrochette/csdp_applications.git
     targetRevision: master
   syncPolicy:
     syncOptions:

@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: canary-analysis
+spec:
+  ports:
+  - port: 80
+    targetPort: http
+    protocol: TCP
+    name: http
+  selector:
+    app: canary-analysis
+  type: LoadBalancer
