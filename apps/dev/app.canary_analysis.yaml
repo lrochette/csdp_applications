@@ -15,7 +15,7 @@ spec:
   source:
     path: ./kustomize/analysis/
     repoURL: https://github.com/lrochette/csdp_applications.git
-    targetRevision: master
+    targetRevision: main
   syncPolicy:
     syncOptions:
     - createNamespace=true
