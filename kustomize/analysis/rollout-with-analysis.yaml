@@ -17,9 +17,9 @@ spec:
       - name: canary-analysis
         #image: argoproj/rollouts-demo:red
         #image: argoproj/rollouts-demo:orange
-        image: argoproj/rollouts-demo:yellow
+        #image: argoproj/rollouts-demo:yellow
         #image: argoproj/rollouts-demo:green
-        #image: argoproj/rollouts-demo:blue
+        image: argoproj/rollouts-demo:blue
         #image: argoproj/rollouts-demo:purple
         imagePullPolicy: Always
         ports:
