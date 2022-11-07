@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  annotations:
+    argocd-autopilot.argoproj-labs.io/default-dest-server: https://9EFB8399DE9A817EC221411CDCB1620C.gr7.us-east-1.eks.amazonaws.com
+    argocd.argoproj.io/sync-options: PruneLast=true
+    argocd.argoproj.io/sync-wave: "-2"
+  creationTimestamp: null
+  name: prod
+  namespace: csdp
+spec:
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  description: prod project to simulate prod environment
+  destinations:
+  - namespace: '*'
+    server: '*'
+  namespaceResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  sourceRepos:
+  - '*'
+status: {}
