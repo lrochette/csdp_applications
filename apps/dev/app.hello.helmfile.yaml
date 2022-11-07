@@ -1,0 +1,39 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  labels:
+    app: hw
+    argocd.argoproj.io/instance: argocd
+    chart: raw-0.2.5
+    heritage: Helm
+    release: argocd-apps
+  name: hw
+  namespace: csdp
+spec:
+  destination:
+    namespace: dev
+    server: https://kubernetes.default.svc
+  project: dev
+  source:
+    path: ./helmfile/hello-world
+    repoURL: https://github.com/lrochette/csdp_applications.git
+
+    plugin:
+      # env:
+      # - name: CLUSTER_ID
+      #   value: primary
+      # - name: HELMFILE_GLOBAL_OPTIONS
+      #   value: --file helmfile.d/applications/argocd/
+      # - name: HELMFILE_TEMPLATE_OPTIONS
+      #   value: --include-crds
+      # - name: HELM_TEMPLATE_OPTIONS
+      #   value: --skip-tests
+      name: helmfile
+    targetRevision: main
+  syncPolicy:
+    syncOptions:
+    - createNamespace=true
+    - ApplyOutOfSyncOnly=true
+    automated:
+      prune: true
+      selfHeal: true
