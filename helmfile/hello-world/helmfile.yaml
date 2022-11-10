@@ -1,0 +1,10 @@
+repositories:
+- name: stable
+  url: https://kubernetes-charts.storage.googleapis.com
+releases:
+- name: mytraefik
+  namespace: default
+  chart: stable/traefik
+  labels:
+    name: traefik-public
+  version: 1.86.2
