@@ -4,6 +4,7 @@ metadata:
   name: nginx-ingress-controller-metrics
   labels:
     app: nginx-ingress
+    release: prometheus-operator
 spec:
   endpoints:
   - interval: 30s
