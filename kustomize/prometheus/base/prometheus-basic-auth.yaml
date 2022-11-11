@@ -4,9 +4,6 @@ data:
   # this is for admin/admin
 kind: Secret
 metadata:
-  creationTimestamp: "2022-11-02T18:14:28Z"
   name: basic-auth
   namespace: monitoring
-  resourceVersion: "294300868"
-  uid: fb182f80-d5b7-432d-a6dc-830e4f2f78cd
 type: Opaque
