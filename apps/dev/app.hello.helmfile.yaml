@@ -2,12 +2,12 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   labels:
-    app: hw
-    argocd.argoproj.io/instance: argocd
-    chart: raw-0.2.5
-    heritage: Helm
-    release: argocd-apps
-  name: hw
+    app: myapp
+    # argocd.argoproj.io/instance: argocd
+    # chart: raw-0.2.5
+    # heritage: Helm
+    # release: argocd-apps
+  name: code-01
   namespace: csdp
 spec:
   destination:
@@ -15,8 +15,8 @@ spec:
     server: https://kubernetes.default.svc
   project: dev
   source:
-    path: ./helmfile/hello-world
-    repoURL: https://github.com/lrochette/csdp_applications.git
+    path: ./code-01/helm/helmfile/myapp
+    repoURL: hhttps://github.com/rootleveltech/codefresh-helmfile-webinar
 
     plugin:
       # env:
@@ -28,8 +28,8 @@ spec:
       #   value: --include-crds
       # - name: HELM_TEMPLATE_OPTIONS
       #   value: --skip-tests
-      name: helmfile
-    targetRevision: main
+      name: helmfile.yaml
+    targetRevision: master
   syncPolicy:
     syncOptions:
     - createNamespace=true
