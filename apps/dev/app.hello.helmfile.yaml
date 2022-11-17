@@ -16,7 +16,7 @@ spec:
   project: dev
   source:
     path: ./code-01/helm/helmfile/myapp
-    repoURL: hhttps://github.com/rootleveltech/codefresh-helmfile-webinar
+    repoURL: https://github.com/rootleveltech/codefresh-helmfile-webinar
 
     plugin:
       # env:
