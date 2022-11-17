@@ -18,7 +18,7 @@ spec:
     path: ./code-01/helm/helmfile/myapp
     repoURL: https://github.com/rootleveltech/codefresh-helmfile-webinar
 
-    plugin:
+    # plugin:
       # env:
       # - name: CLUSTER_ID
       #   value: primary
@@ -28,7 +28,7 @@ spec:
       #   value: --include-crds
       # - name: HELM_TEMPLATE_OPTIONS
       #   value: --skip-tests
-      name: helmfile.yaml
+      # name: helmfile.yaml
     targetRevision: master
   syncPolicy:
     syncOptions:
