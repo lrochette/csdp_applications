@@ -11,7 +11,7 @@ spec:
     repoURL: https://gitlab.com/voting-application/config.git
     targetRevision: master
     path: helm
-    plugin: {}
+    plugin: helmfile
   destination:
     server: https://kubernetes.default.svc
     namespace: dev
