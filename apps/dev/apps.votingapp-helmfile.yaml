@@ -8,10 +8,14 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://gitlab.com/voting-application/config.git
+    #repoURL: https://gitlab.com/voting-application/config.git
     targetRevision: master
     path: helm
-    plugin: {}
+    plugin:
+      name: helmfile
+      env:
+      - name: HELM_DATA_HOME
+        value: /home/argocd/.local/share/helm
 #      name: helmfile
   destination:
     server: https://kubernetes.default.svc
