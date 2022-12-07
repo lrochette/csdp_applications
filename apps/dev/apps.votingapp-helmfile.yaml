@@ -13,6 +13,7 @@ spec:
     path: helm
     plugin:
       name: helmfile
+      command: generate
   destination:
     server: https://kubernetes.default.svc
     namespace: dev
