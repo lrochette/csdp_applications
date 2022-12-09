@@ -10,7 +10,7 @@ spec:
   source:
     # repoURL: https://gitlab.com/voting-application/config.git
     repoUrl: https://github.com/lrochette/voting-application-helmfile.git
-    targetRevision: master
+    targetRevision: main
     path: helm
     plugin:
       name: helmfile
