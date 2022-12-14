@@ -14,5 +14,8 @@ spec:
         paths:
           - path: /color-preview(/|$)(.*)
             backend:
-              serviceName: color-preview
-              servicePort: 80
+              service:
+                name: color-preview
+                port:
+                  number: 80
+            pathType: Prefix

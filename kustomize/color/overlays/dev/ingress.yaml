@@ -1,4 +1,4 @@
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: color
@@ -14,5 +14,8 @@ spec:
         paths:
           - path: /color(/|$)(.*)
             backend:
-              serviceName: color
-              servicePort: 80
+              service:
+                name: color
+                port:
+                  number: 80
+            pathType: Prefix
