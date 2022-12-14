@@ -16,12 +16,7 @@ spec:
     successCondition:  result[0] > 0.90 #len(result) == 0 ||
     provider:
       prometheus:
-        # headers:
-        # - key: Authorization
-        #   value: "Basic YWRtaW46YWRtaW4="
-        # address: http://prometheus-operator-prometheus.prometheus-operator:9090
         address: http://prometheus-k8s.monitoring:9090
-        #address: http://lrcsdp.support.cf-cd.com/prometheus
         query: >
           sum(
             rate(nginx_ingress_controller_requests{ingress="{{args.ingress}}",status!~"[4-5].*"}[20s]))
