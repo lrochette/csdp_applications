@@ -16,7 +16,6 @@ spec:
             backend:
               service:
                 name: color
-                service:
-                  port:
-                    number: 80
+                port:
+                  number: 80
             pathType: ImplementationSpecific
