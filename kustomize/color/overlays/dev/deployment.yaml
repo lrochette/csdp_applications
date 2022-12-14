@@ -17,11 +17,8 @@ spec:
     spec:
       containers:
         - name: color
-<<<<<<< HEAD
           image: lrochette/color:magenta
-=======
-          image: lrochette/color:2d69454
->>>>>>> 037ca3b79c6189d6ed1d94b90f133225961c6a58
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
+# empty
