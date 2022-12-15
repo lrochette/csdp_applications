@@ -13,7 +13,8 @@ spec:
   project: dev
   source:
     path: ./kustomize/express-blue-green/overlays/dev
-    repoURL: https://github.com/lrochette/csdp_applications.git
+    repoURL: https://github.com/codefresh-contrib/csdp-salesdemo_applications.git
+      # https://github.com/lrochette/csdp_applications.git
     targetRevision: main
   syncPolicy:
     syncOptions:
