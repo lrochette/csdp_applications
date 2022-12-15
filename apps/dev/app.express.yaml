@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: express-app
+  labels:
+    app: express
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: dev
+    name: in-cluster
+  project: express
+  source:
+    path: ./kustomize/express/overlays/dev
+    repoURL: https://github.com/lrochette/csdp_applications.git
+    targetRevision: main
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
