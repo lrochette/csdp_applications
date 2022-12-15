@@ -14,7 +14,7 @@ spec:
       paths:
       - path: /canary-analysis(/|$)(.*)
         backend:
-          service
+          service:
             name: canary-analysis
             port:
               number: 80
