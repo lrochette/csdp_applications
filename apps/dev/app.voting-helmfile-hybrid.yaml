@@ -5,7 +5,7 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  project: default
+  project: dev
   source:
     repoURL: https://github.com/lrochette/voting-application-helmfile.git
     targetRevision: main
