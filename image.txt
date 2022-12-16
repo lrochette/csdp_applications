@@ -1,0 +1,170 @@
+      image: quay.io/codefresh/argo-events:v1.7.2-cap-CR-14600
+      image: quay.io/codefresh/argo-events:v1.7.2-cap-CR-14600
+      image: quay.io/codefresh/argo-events:v1.7.2-cap-CR-14600
+      image: quay.io/codefresh/argo-events:v1.7.2-cap-CR-14600
+    - image: quay.io/codefresh/argo-rollouts:v1.2.0-cap-CR-10626
+      image: quay.io/codefresh/argo-rollouts:v1.2.0-cap-CR-10626
+      image: quay.io/codefresh/argocli:v3.2.6-cap-CR-8697
+      image: quay.io/codefresh/argocli:v3.2.6-cap-CR-8697
+      image: quay.io/codefresh/argocd:v2.4.15-cap-fix-applicationset
+      image: quay.io/codefresh/argocd:v2.4.15-cap-fix-applicationset
+      image: quay.io/codefresh/applicationset:v0.4.2-CR-13254-remove-private-logs
+      image: quay.io/codefresh/applicationset:v0.4.2-CR-13254-remove-private-logs
+      image: ghcr.io/dexidp/dex:v2.35.3-distroless
+      image: quay.io/codefresh/argocd:v2.4.15-cap-fix-applicationset
+      image: ghcr.io/dexidp/dex:v2.35.3-distroless
+      image: quay.io/codefresh/argocd:v2.4.15-cap-fix-applicationset
+      image: quay.io/codefresh/redis:7.0.4-alpine
+      image: quay.io/codefresh/redis:7.0.4-alpine
+      image: quay.io/codefresh/argocd:v2.4.15-cap-fix-applicationset
+      image: alpine:3.8
+      image: quay.io/codefresh/argocd:v2.4.15-cap-fix-applicationset
+      image: quay.io/codefresh/argocd:v2.4.15-cap-fix-applicationset
+      image: alpine:3.8
+      image: quay.io/codefresh/argocd:v2.4.15-cap-fix-applicationset
+      image: quay.io/codefresh/argocd:v2.4.15-cap-fix-applicationset
+      image: quay.io/codefresh/argocd:v2.4.15-cap-fix-applicationset
+      image: quay.io/codefresh/cap-app-proxy:1.1995.2
+      image: alpine:3.16
+      image: quay.io/codefresh/cap-app-proxy:1.1995.2
+      image: alpine:3.16
+      image: quay.io/codefresh/argo-events:v1.7.2-cap-CR-14600
+      image: quay.io/codefresh/argo-events:v1.7.2-cap-CR-14600
+      image: quay.io/codefresh/argo-events:v1.7.2-cap-CR-14600
+      image: quay.io/codefresh/argo-events:v1.7.2-cap-CR-14600
+      image: quay.io/codefresh/argoexec:v3.2.6-cap-CR-8697
+      image: gcr.io/kaniko-project/executor:v1.7.0
+      image: quay.io/codefresh/argoexec:v3.2.6-cap-CR-8697
+    - image: gcr.io/kaniko-project/executor:v1.7.0
+    - image: quay.io/codefresh/argoexec:v3.2.6-cap-CR-8697
+    - image: quay.io/codefresh/argoexec:v3.2.6-cap-CR-8697
+      image: quay.io/codefresh/argoexec:v3.2.6-cap-CR-8697
+      image: gcr.io/kaniko-project/executor:v1.7.0
+      image: quay.io/codefresh/argoexec:v3.2.6-cap-CR-8697
+    - image: gcr.io/kaniko-project/executor:v1.7.0
+    - image: quay.io/codefresh/argoexec:v3.2.6-cap-CR-8697
+    - image: quay.io/codefresh/argoexec:v3.2.6-cap-CR-8697
+      image: quay.io/codefresh/argoexec:v3.2.6-cap-CR-8697
+      image: gcr.io/kaniko-project/executor:v1.7.0
+      image: quay.io/codefresh/argoexec:v3.2.6-cap-CR-8697
+    - image: gcr.io/kaniko-project/executor:v1.7.0
+    - image: quay.io/codefresh/argoexec:v3.2.6-cap-CR-8697
+    - image: quay.io/codefresh/argoexec:v3.2.6-cap-CR-8697
+      image: quay.io/codefresh/argoexec:v3.2.6-cap-CR-8697
+      image: gcr.io/kaniko-project/executor:v1.7.0
+      image: quay.io/codefresh/argoexec:v3.2.6-cap-CR-8697
+    - image: gcr.io/kaniko-project/executor:v1.7.0
+    - image: quay.io/codefresh/argoexec:v3.2.6-cap-CR-8697
+    - image: quay.io/codefresh/argoexec:v3.2.6-cap-CR-8697
+      image: quay.io/codefresh/argoexec:v3.2.6-cap-CR-8697
+      image: gcr.io/kaniko-project/executor:v1.7.0
+      image: quay.io/codefresh/argoexec:v3.2.6-cap-CR-8697
+    - image: gcr.io/kaniko-project/executor:v1.7.0
+    - image: quay.io/codefresh/argoexec:v3.2.6-cap-CR-8697
+    - image: quay.io/codefresh/argoexec:v3.2.6-cap-CR-8697
+      image: quay.io/codefresh/argoexec:v3.2.6-cap-CR-8697
+      image: gcr.io/kaniko-project/executor:v1.7.0
+      image: quay.io/codefresh/argoexec:v3.2.6-cap-CR-8697
+    - image: gcr.io/kaniko-project/executor:v1.7.0
+    - image: quay.io/codefresh/argoexec:v3.2.6-cap-CR-8697
+    - image: quay.io/codefresh/argoexec:v3.2.6-cap-CR-8697
+      image: quay.io/codefresh/argoexec:v3.2.6-cap-CR-8697
+      image: gcr.io/kaniko-project/executor:v1.7.0
+      image: quay.io/codefresh/argoexec:v3.2.6-cap-CR-8697
+    - image: gcr.io/kaniko-project/executor:v1.7.0
+    - image: quay.io/codefresh/argoexec:v3.2.6-cap-CR-8697
+    - image: quay.io/codefresh/argoexec:v3.2.6-cap-CR-8697
+      image: quay.io/codefresh/argoexec:v3.2.6-cap-CR-8697
+      image: gcr.io/kaniko-project/executor:v1.7.0
+      image: quay.io/codefresh/argoexec:v3.2.6-cap-CR-8697
+    - image: gcr.io/kaniko-project/executor:v1.7.0
+    - image: quay.io/codefresh/argoexec:v3.2.6-cap-CR-8697
+    - image: quay.io/codefresh/argoexec:v3.2.6-cap-CR-8697
+      image: quay.io/codefresh/argo-events:v1.7.2-cap-CR-14600
+      image: quay.io/codefresh/argo-events:v1.7.2-cap-CR-14600
+      image: quay.io/codefresh/argo-events:v1.7.2-cap-CR-14600
+      image: quay.io/codefresh/argo-events:v1.7.2-cap-CR-14600
+      image: quay.io/codefresh/argo-events:v1.7.2-cap-CR-14600
+      image: quay.io/codefresh/argo-events:v1.7.2-cap-CR-14600
+      image: quay.io/codefresh/argo-events:v1.7.2-cap-CR-14600
+      image: quay.io/codefresh/argo-events:v1.7.2-cap-CR-14600
+      image: quay.io/codefresh/argo-events:v1.7.2-cap-CR-14600
+      image: quay.io/codefresh/argo-events:v1.7.2-cap-CR-14600
+      image: quay.io/codefresh/argo-events:v1.7.2-cap-CR-14600
+      image: quay.io/codefresh/argo-events:v1.7.2-cap-CR-14600
+      image: quay.io/codefresh/argo-events:v1.7.2-cap-CR-14600
+      image: quay.io/codefresh/argo-events:v1.7.2-cap-CR-14600
+      image: quay.io/codefresh/argoexec:v3.2.6-cap-CR-8697
+      image: quay.io/codefresh/cli-v2
+      image: quay.io/codefresh/argoexec:v3.2.6-cap-CR-8697
+      image: quay.io/codefresh/cli-v2:latest
+      image: quay.io/codefresh/argoexec:v3.2.6-cap-CR-8697
+      image: quay.io/codefresh/argoexec:v3.2.6-cap-CR-8697
+      image: quay.io/codefresh/argo-events:v1.7.2-cap-CR-14600
+      image: quay.io/codefresh/argo-events:v1.7.2-cap-CR-14600
+      image: quay.io/codefresh/argo-events:v1.7.2-cap-CR-14600
+      image: quay.io/codefresh/argo-events:v1.7.2-cap-CR-14600
+      image: nats-streaming:0.22.1
+      image: natsio/prometheus-nats-exporter:0.8.0
+      image: natsio/prometheus-nats-exporter:0.8.0
+      image: nats-streaming:0.22.1
+      image: nats-streaming:0.22.1
+      image: natsio/prometheus-nats-exporter:0.8.0
+      image: natsio/prometheus-nats-exporter:0.8.0
+      image: nats-streaming:0.22.1
+      image: nats-streaming:0.22.1
+      image: natsio/prometheus-nats-exporter:0.8.0
+      image: natsio/prometheus-nats-exporter:0.8.0
+      image: nats-streaming:0.22.1
+      image: quay.io/codefresh/argo-events:v1.7.2-cap-CR-14600
+      image: quay.io/codefresh/argo-events:v1.7.2-cap-CR-14600
+      image: quay.io/codefresh/argo-events:v1.7.2-cap-CR-14600
+      image: quay.io/codefresh/argo-events:v1.7.2-cap-CR-14600
+      image: quay.io/codefresh/argo-events:v1.7.2-cap-CR-14600
+      image: quay.io/codefresh/argo-events:v1.7.2-cap-CR-14600
+      image: quay.io/codefresh/argo-events:v1.7.2-cap-CR-14600
+      image: quay.io/codefresh/argo-events:v1.7.2-cap-CR-14600
+      image: quay.io/codefresh/argo-events:v1.7.2-cap-CR-14600
+      image: quay.io/codefresh/argo-events:v1.7.2-cap-CR-14600
+    - image: quay.io/codefresh_sa/express-microservice:fc94a48
+      image: quay.io/codefresh_sa/express-microservice:fc94a48
+    - image: quay.io/codefresh_sa/express-microservice:fc94a48
+      image: quay.io/codefresh_sa/express-microservice:fc94a48
+    - image: quay.io/codefresh_sa/express-microservice:fc94a48
+      image: quay.io/codefresh_sa/express-microservice:fc94a48
+    - image: quay.io/codefresh_sa/express-microservice:fc94a48
+      image: quay.io/codefresh_sa/express-microservice:fc94a48
+      image: quay.io/codefresh/argo-events:v1.7.2-cap-CR-14600
+      image: quay.io/codefresh/argo-events:v1.7.2-cap-CR-14600
+      image: quay.io/codefresh/argo-events:v1.7.2-cap-CR-14600
+      image: quay.io/codefresh/argo-events:v1.7.2-cap-CR-14600
+      image: quay.io/codefresh/argo-events:v1.7.2-cap-CR-14600
+      image: quay.io/codefresh/argo-events:v1.7.2-cap-CR-14600
+    - image: nginx:1.22-alpine
+      image: nginx:1.22-alpine
+      image: quay.io/codefresh/argo-events:v1.7.2-cap-CR-14600
+      image: quay.io/codefresh/argo-events:v1.7.2-cap-CR-14600
+      image: quay.io/codefresh/argo-events:v1.7.2-cap-CR-14600
+      image: quay.io/codefresh/argo-events:v1.7.2-cap-CR-14600
+      image: quay.io/codefresh/argo-events:v1.7.2-cap-CR-14600
+      image: quay.io/codefresh/argo-events:v1.7.2-cap-CR-14600
+      image: quay.io/codefresh/argo-events:v1.7.2-cap-CR-14600
+      image: quay.io/codefresh/argo-events:v1.7.2-cap-CR-14600
+      image: quay.io/codefresh/sealed-secrets-controller:v0.17.5
+      image: quay.io/codefresh/sealed-secrets-controller:v0.17.5
+      image: quay.io/codefresh/argo-events:v1.7.2-cap-CR-14600
+      image: quay.io/codefresh/argo-events:v1.7.2-cap-CR-14600
+      image: quay.io/codefresh/argo-events:v1.7.2-cap-CR-14600
+      image: quay.io/codefresh/argo-events:v1.7.2-cap-CR-14600
+      image: quay.io/codefresh/workflow-controller:v3.2.6-cap-CR-8697
+      image: quay.io/codefresh/workflow-controller:v3.2.6-cap-CR-8697
+      image: quay.io/codefresh/argo-events:v1.7.2-cap-CR-14600
+      image: quay.io/codefresh/argo-events:v1.7.2-cap-CR-14600
+      image: quay.io/codefresh/argo-events:v1.7.2-cap-CR-14600
+      image: quay.io/codefresh/argo-events:v1.7.2-cap-CR-14600
+      image: quay.io/codefresh/argoexec:v3.2.6-cap-CR-8697
+      image: bash
+      image: quay.io/codefresh/argoexec:v3.2.6-cap-CR-8697
+      image: bash:latest
+      image: quay.io/codefresh/argoexec:v3.2.6-cap-CR-8697
+      image: quay.io/codefresh/argoexec:v3.2.6-cap-CR-8697
