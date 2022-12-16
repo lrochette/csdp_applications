@@ -11,8 +11,8 @@ spec:
     repoURL: https://github.com/argoproj/argocd-example-apps.git
     targetRevision: HEAD
   destination:
-    name: dev2
-    namespace: default
+    server: https://kubernetes.default.svc
+    namespace: dev
   syncPolicy:
     automated:
       prune: false
