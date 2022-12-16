@@ -16,7 +16,7 @@ spec:
       - name: HELM_DATA_HOME
         value: /home/argocd/.local/share/helm
   destination:
-    name: in-cluster
+    server: https://kubernetes.default.svc
     namespace: dev
   syncPolicy:
     automated: {}
