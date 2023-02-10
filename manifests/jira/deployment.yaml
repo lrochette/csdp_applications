@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: jira
-          image: latlassian/jira-software:9.3.2
+          image: atlassian/jira-software:9.3.2
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
