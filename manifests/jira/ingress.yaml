@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: jira
+  annotations:
+    ingress.kubernetes.io/proxy-body-size: 100M
+    kubernetes.io/ingress.class: nginx
+    ingress.kubernetes.io/app-root: /
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  rules:
+  - host: lrcsdp.support.cf-cd.com
+    http:
+      paths:
+      - path: /jira(/|$)(.*)
+        backend:
+          service:
+            name: jira
+            port:
+              number: 8080
+        pathType: Prefix
