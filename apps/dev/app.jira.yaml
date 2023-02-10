@@ -9,9 +9,9 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: dev
+    namespace: jira
     server: https://kubernetes.default.svc
-  project: dev
+  project: jira
   source:
     path: ./manifests/jira
     repoURL: https://github.com/lrochette/csdp_applications.git
