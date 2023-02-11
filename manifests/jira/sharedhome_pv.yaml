@@ -1,0 +1,12 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: jira-share-pvc
+  labels:
+    app: jira-share
+spec:
+  accessModes:
+    – ReadWriteMany
+  resources:
+    requests:
+      storage: 10Gi

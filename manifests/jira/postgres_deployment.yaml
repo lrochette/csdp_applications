@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jira-postgres
+  labels:
+    app: jira-postgres
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jira-postgres
+  template:
+    metadata:
+      labels:
+        app: jira-postgres
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:9.6
+          imagePullPolicy: "IfNotPresent"
+          ports:
+            - containerPort: 5432
+          envFrom:
+            - configMapRef:
+                name: jira-postgres-config
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: jira-postgres-pv
+      volumes:
+        - name: jira-postgres-pv
+          persistentVolumeClaim:
+            claimName: jira-postgres-pvc

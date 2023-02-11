@@ -1,0 +1,12 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: jira-postgres-pvc
+  labels:
+    app: jira-postgres
+spec:
+  accessModes:
+    – ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
