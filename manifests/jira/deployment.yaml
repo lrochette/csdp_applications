@@ -16,20 +16,31 @@ spec:
         app: jira
     spec:
       containers:
-        - name: jira
-          image: atlassian/jira-software:9.3.2
-          imagePullPolicy: Always
-          env:
-            - name: ATL_PROXY_NAME
-              value: https://lrcsdp.support.cf-cd.com/jira
-          resources:
-            requests:
-              memory: 2Gi
-          ports:
-            - containerPort: 8080
-          volumeMounts:
-          - mountPath: /var/atlassian/application-data/jira
-            name: jira-volume
+      - name: jira
+        image: atlassian/jira-software:9.3.2
+        readinessProbe:
+          httpGet:
+            path: /status
+            port: 8080
+          initialDelaySeconds: 120
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 600
+          periodSeconds: 10  
+        env:
+          - name: ATL_PROXY_NAME
+            value: https://lrcsdp.support.cf-cd.com/jira
+        resources:
+          requests:
+            memory: 2Gi
+        ports:
+          - containerPort: 8080
+        volumeMounts:
+        - mountPath: /var/atlassian/application-data/jira
+          name: jira-volume
       volumes:
         - name: jira-volume
           emptyDir:
