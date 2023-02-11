@@ -19,5 +19,17 @@ spec:
         - name: jira
           image: atlassian/jira-software:9.3.2
           imagePullPolicy: Always
+          env:
+            - name: ATL_PROXY_NAME
+              value: https://lrcsdp.support.cf-cd.com/jira
+          resources:
+            requests:
+              memory: 2Gi
           ports:
             - containerPort: 8080
+          volumeMounts:
+          - mountPath: /var/atlassian/application-data/jira
+            name: jira-volume
+      volumes:
+        - name: jira-volume
+          emptyDir:
