@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: Prune=false
+  labels:
+    kubernetes.io/metadata.name: jira
+  name: jira
+spec:
+  finalizers:
+  - kubernetes
