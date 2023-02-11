@@ -29,10 +29,10 @@ spec:
             path: /
             port: 8080
           initialDelaySeconds: 600
-          periodSeconds: 10  
+          periodSeconds: 10
         env:
           - name: ATL_PROXY_NAME
-            value: https://lrcsdp.support.cf-cd.com/jira
+            value: https://jira.support.cf-cd.com
         resources:
           requests:
             memory: 2Gi
