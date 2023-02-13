@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: jira
+spec:
+  serviceName: jira
+  replicas: 3
+  selector:
+    matchLabels:
+      app: jira
+  template:
+    metadata:
+      labels:
+        app: jira
+    spec:
+      containers:
+      - name: jira
+        image: atlassian/jira-software:9.3.2
+        readinessProbe:
+          httpGet:
+            path: /status
+            port: 8080
+          initialDelaySeconds: 120
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 600
+          periodSeconds: 10
+        envFrom:
+          - configMapRef:
+              name: jira-config
+        ports:
+        - containerPort: 8080
+          name: web
+        volumeMounts:
+        - name: local-home
+          mountPath: /var/atlassian/application-data/jira
+        - name: jira-share-pv
+          mountPath: /var/atlassian/application-data/jira/shared-home
+      volumes:
+        - name: jira-share-pv
+          persistentVolumeClaim:
+            claimName: jira-share-pvc
+  volumeClaimTemplates:
+  - metadata:
+      name: local-home
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 5Gi
