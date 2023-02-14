@@ -5,8 +5,7 @@ metadata:
   labels:
     app: jira-postgres
 spec:
-  accessModes:
-    – ReadWriteOnce
+  accessModes: [ "ReadWriteOnce" ]
   resources:
     requests:
       storage: 5Gi

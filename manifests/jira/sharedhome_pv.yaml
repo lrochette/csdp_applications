@@ -5,8 +5,7 @@ metadata:
   labels:
     app: jira-share
 spec:
-  accessModes:
-    – ReadWriteMany
+  accessModes: [ "ReadWriteMany" ]
   resources:
     requests:
       storage: 10Gi
