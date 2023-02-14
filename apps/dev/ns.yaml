@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: Prune=true
+  labels:
+    kubernetes.io/metadata.name: external-secrets
+  name: external-secrets
+spec:
+  finalizers:
+  - kubernetes
