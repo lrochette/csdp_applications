@@ -9,4 +9,3 @@ data:
   JVM_MAXIMUM_MEMORY: 2048m
   ATL_PROXY_NAME: jira.support.cf-cd.com
   ATL_PROXY_PORT: '32631'
-  PGDATA: /var/lib/postgresql/data/pgdata
