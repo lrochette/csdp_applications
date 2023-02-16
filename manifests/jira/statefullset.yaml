@@ -43,11 +43,14 @@ spec:
         - name: jira-share-pv
           persistentVolumeClaim:
             claimName: jira-share-pvc
-  volumeClaimTemplates:
-  - metadata:
-      name: local-home
-    spec:
-      accessModes: [ "ReadWriteOnce" ]
-      resources:
-        requests:
-          storage: 5Gi
+        - name: local-home
+          persistentVolumeClaim:
+            claimName: local-home-pvc
+  # volumeClaimTemplates:
+  # - metadata:
+  #     name: local-home
+  #   spec:
+  #     accessModes: [ "ReadWriteOnce" ]
+  #     resources:
+  #       requests:
+  #         storage: 5Gi
