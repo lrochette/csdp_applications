@@ -41,13 +41,16 @@ spec:
           mountPath: /var/atlassian/application-data/jira/shared-home
       volumes:
         - name: jira-share-pv
-          persistentVolumeClaim:
-            claimName: jira-share-pvc
-  volumeClaimTemplates:
-  - metadata:
-      name: local-home
-    spec:
-      accessModes: [ "ReadWriteOnce" ]
-      resources:
-        requests:
-          storage: 5Gi
+          emptyDir: {}
+          # persistentVolumeClaim:
+          #   claimName: jira-share-pvc
+        - name: local-home
+          emptyDir: {}
+  # volumeClaimTemplates:
+  # - metadata:
+  #     name: local-home
+  #   spec:
+  #     accessModes: [ "ReadWriteOnce" ]
+  #     resources:
+  #       requests:
+  #         storage: 5Gi

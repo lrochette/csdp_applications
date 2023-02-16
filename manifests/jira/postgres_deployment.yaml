@@ -28,5 +28,6 @@ spec:
               name: jira-postgres-pv
       volumes:
         - name: jira-postgres-pv
-          persistentVolumeClaim:
-            claimName: jira-postgres-pvc
+          emptyDir: {}
+          # persistentVolumeClaim:
+          #   claimName: jira-postgres-pvc
