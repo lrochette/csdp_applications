@@ -16,6 +16,10 @@ spec:
       containers:
       - name: jira
         image: atlassian/jira-software:9.3.2
+        resources:
+          requests:
+            cpu: "2"
+            memory: "2G"
         readinessProbe:
           httpGet:
             path: /status
