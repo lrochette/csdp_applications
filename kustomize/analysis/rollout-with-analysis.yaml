@@ -37,7 +37,7 @@ spec:
         - templateName: success-rate
         args:
         - name: ingress
-          value: canary-analysis
+          value: canary-analysis-preview
       canaryService: canary-analysis-preview
       steps:
       - setWeight: 40
