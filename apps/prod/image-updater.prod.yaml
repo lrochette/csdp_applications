@@ -16,7 +16,7 @@ spec:
     path: ./kustomize/image-updater/overlays/prod/
 
   destination:
-    server: lr3
+    name: lr3
     namespace: prod
 
   # Sync policy
