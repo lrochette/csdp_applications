@@ -1,4 +1,3 @@
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -8,4 +7,4 @@ spec:
     spec:
       containers:
       - name: webserver-simple
-        image: docker.io/lrochette/gitops-simple-app:1.0
+        image: lrochette/gitops-simple-app:1.0
