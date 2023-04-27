@@ -7,5 +7,5 @@ resources:
 patchesStrategicMerge:
 - version.yml
 images:
-- name: docker.io/lrochette/gitops-simple-app
+- name: lrochette/gitops-simple-app
   newTag: 5.0-dev

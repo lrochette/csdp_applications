@@ -18,6 +18,6 @@ spec:
       containers:
       - name: webserver-simple
         imagePullPolicy: Always
-        image: docker.io/lrochette/gitops-simple-app:latest
+        image: lrochette/gitops-simple-app:latest
         ports:
         - containerPort: 8080
