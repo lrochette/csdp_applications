@@ -8,4 +8,4 @@ patchesStrategicMerge:
 - version.yml
 images:
 - name: docker.io/lrochette/gitops-simple-app
-  newTag: 4.0-dev
+  newTag: 5.0-dev
