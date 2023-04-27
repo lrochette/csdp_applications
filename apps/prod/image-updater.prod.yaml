@@ -4,9 +4,9 @@ metadata:
   name: image-updater-prod
   namespace: csdp
   annotations:
-    argocd-image-updater.argoproj.io/image-list: example=docker.io/lrochette/gitops-simple-app
-    argocd-image-updater.argoproj.io/example.update-strategy: latest
-    argocd-image-updater.argoproj.io/example.allow-tags: regexp:-prod$
+    argocd-image-updater.argoproj.io/image-list: prod=docker.io/lrochette/gitops-simple-app
+    argocd-image-updater.argoproj.io/prod.update-strategy: latest
+    argocd-image-updater.argoproj.io/prod.allow-tags: regexp:-prod$
 
 spec:
   project: prod
