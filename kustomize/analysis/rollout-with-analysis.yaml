@@ -19,8 +19,8 @@ spec:
         #image: argoproj/rollouts-demo:orange
         #image: argoproj/rollouts-demo:yellow
         #image: argoproj/rollouts-demo:green
-        image: argoproj/rollouts-demo:blue
-        #image: argoproj/rollouts-demo:purple
+        # image: argoproj/rollouts-demo:blue
+        image: argoproj/rollouts-demo:purple
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
