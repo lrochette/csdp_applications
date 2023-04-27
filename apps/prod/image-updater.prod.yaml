@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: image-updater-prod
-  namespace: argocd
+  namespace: csdp
   annotations:
     argocd-image-updater.argoproj.io/image-list: example=docker.io/lrochette/gitops-simple-app
     argocd-image-updater.argoproj.io/example.update-strategy: latest
