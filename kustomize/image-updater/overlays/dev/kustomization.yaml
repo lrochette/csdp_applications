@@ -8,4 +8,4 @@ patchesStrategicMerge:
 - version.yml
 images:
 - name: lrochette/gitops-simple-app
-  newTag: 5.0-dev
+  newTag: 6.0-dev
