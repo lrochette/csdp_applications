@@ -6,6 +6,3 @@ resources:
 - ../../base
 patchesStrategicMerge:
 - version.yml
-images:
-- name: lrochette/gitops-simple-app
-  newTag: 7.0-dev
