@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: color-prod-new
+  namespace: csdp
+  labels:
+    app: color
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: prod-new
+    name: lr3
+  project: prod
+  source:
+    path: ./kustomize/color/overlays/prod
+    repoURL: https://github.com/lrochette/csdp_applications.git
+    targetRevision: main
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
