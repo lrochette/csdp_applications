@@ -1,0 +1,5 @@
+image:
+  repository: bitnami/jenkins
+  tag: 2.249.2
+jenkins:
+  jenkinsUsername: "aaaa"
