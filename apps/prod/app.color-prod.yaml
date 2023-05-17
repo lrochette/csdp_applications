@@ -9,7 +9,7 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: prod-francisco
+    namespace: prod
     name: lr3
   project: prod
   source:
