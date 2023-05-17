@@ -32,7 +32,7 @@ spec:
     targetRevision: master
   syncPolicy:
     syncOptions:
-    - createNamespace=true
+    - CreateNamespace=true
     - ApplyOutOfSyncOnly=true
     automated:
       prune: true
