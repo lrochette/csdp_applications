@@ -22,7 +22,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: jenkins
-                  key: password
+                  key: jk-password
           ports:
             - name: http
               containerPort: 8080
