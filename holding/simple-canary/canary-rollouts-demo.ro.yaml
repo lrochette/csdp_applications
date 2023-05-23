@@ -1,0 +1,61 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: simple-canary
+spec:
+  replicas: 5
+  revisionHistoryLimit: 4
+  selector:
+    matchLabels:
+      app: simple-canary
+  template:
+    metadata:
+      labels:
+        app: simple-canary
+    spec:
+      containers:
+      - name: simple-canary
+        image: argoproj/rollouts-demo:red
+        # image: argoproj/rollouts-demo:blue
+        # image: argoproj/rollouts-demo:green
+        # image: argoproj/rollouts-demo:yellow
+        # image: argoproj/rollouts-demo:purple
+        # image: argoproj/rollouts-demo:orange
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 5m
+            memory: 32Mi
+  strategy:
+    canary:
+      stableService: simple-canary
+      canaryService: simple-canary-preview
+      # trafficRouting:
+      #   istio:
+      #     virtualService:
+      #       name: canary-rollouts-demo  # required
+      #       routes:
+      #       - primary
+      steps:
+      - setWeight: 20
+      - pause: {}
+      # - analysis:
+      #     templates:
+      #     - templateName: success-rate
+      #     args:
+      #     - name: service  ## Service's Internal DNS record
+      #       value: canary-rollouts-demo-preview.dev.svc.cluster.local
+      - analysis:
+          templates:
+          - templateName: pass-always
+          # - templateName: inconclusive-always
+          # - templateName: fail-always
+
+      - setWeight: 40
+      - pause: {duration: 15s}
+      - setWeight: 80
+      - pause: {duration: 10s}

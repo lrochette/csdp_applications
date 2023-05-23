@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: workflows
+spec:
+  generators:
+  - list:
+      elements:
+      - cluster: lr3
+        url: https://9EFB8399DE9A817EC221411CDCB1620C.gr7.us-east-1.eks.amazonaws.com
+      # - cluster: lr2
+      #   url: https://F6CCE3BD7B6163A01396BFFF61A7BB0C.gr7.us-east-1.eks.amazonaws.com
+  template:
+    metadata:
+      name: '{{cluster}}-workflow'
+    spec:
+      project: wkf
+      source:
+        repoURL: https://github.com/lrochette/csdp_infra.git
+        targetRevision: main
+        path: kustomize/workflows/base
+      destination:
+        #server: '{{url}}'
+        name: '{{cluster}}'
+        namespace: workflow
+      syncPolicy:
+        syncOptions:
+        - createNamespace=true
+        automated:
+          prune: true
+          selfHeal: true

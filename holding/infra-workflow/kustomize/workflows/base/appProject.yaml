@@ -1,0 +1,45 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: PruneLast=true
+  labels:
+    codefresh.io/entity: runtime
+  name: wkf
+  namespace: workflow
+spec:
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  description: wkf project
+  destinations:
+  - namespace: '*'
+    server: '*'
+  namespaceResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  sourceRepos:
+  - '*'
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: PruneLast=true
+  labels:
+    codefresh.io/entity: runtime
+  name: wkf
+  namespace: csdp
+spec:
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  description: wkf project
+  destinations:
+  - namespace: '*'
+    server: '*'
+  namespaceResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  sourceRepos:
+  - '*'

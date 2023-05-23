@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: canary-ro
+  namespace:  csdp5
+  labels:
+    app: canary-ro
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  destination:
+    namespace: visa
+    server: https://kubernetes.default.svc
+  source:
+    path: ./apps/canary-rollouts
+    repoURL: https://github.com/lrochette/csdp5_git-source.git
+    targetRevision: main
+  syncPolicy:
+    syncOptions:
+    - createNamespace=true
+    - RespectIgnoreDifferences=true ## New configuration for istio. Check `ignoreDifferences`` conf below.
+    automated:
+      prune: true
+      selfHeal: true
+  ignoreDifferences:      ## For istio: https://argo-cd.readthedocs.io/en/release-2.4/user-guide/sync-options/#respect-ignore-difference-configs
+  - group: networking.istio.io
+    kind: VirtualService
+    jsonPointers:
+    - /spec/http/0/route/0/weight
+    - /spec/http/0/route/1/weight

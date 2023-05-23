@@ -1,0 +1,33 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: visa-gw-ro
+spec:
+  selector:
+    istio: ingress
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "lr5.support.cf-cd.com"
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: canary-ro
+spec:
+  hosts:
+  - "lr5.support.cf-cd.com"
+  gateways:
+  - visa-gw-ro
+  http:
+  - name: primary  ## referenced in canary.trafficRouting.istio.virtualService.routes
+    route:
+    - destination:
+        host: canary-ro   ## referenced in canary.stableService
+      weight: 100 ## this is ignored by Argo Rollouts
+    - destination:
+        host: canary-ro-preview ## referenced in canary.canaryService
+      weight: 0 ## this is ignored by Argo Rollouts

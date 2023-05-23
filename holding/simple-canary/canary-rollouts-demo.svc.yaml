@@ -1,0 +1,27 @@
+## Main Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: simple-canary
+spec:
+  ports:
+  - port: 80
+    targetPort: http
+    protocol: TCP
+    name: http
+  selector:
+    app: simple-canary
+---
+## Canary Service (preview)
+apiVersion: v1
+kind: Service
+metadata:
+  name: simple-canary-preview
+spec:
+  ports:
+  - port: 80
+    targetPort: http
+    protocol: TCP
+    name: http
+  selector:
+    app: simple-canary

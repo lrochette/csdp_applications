@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AnalysisTemplate
+metadata:
+  name: success-rate
+spec:
+  args:
+  - name: service  ## Service's Internal DNS record. E.g.: "canary-rollouts-demo".
+  metrics:
+  - name: success-rate
+    failureLimit: 5   ## If there are 4 or more failures, the Analysis Run is marked as Failed.
+    interval: 15s     ## This metric will be executed indefinitely every 15 seconds.
+    count: 12          ## This metric will be executed 5 times only
+    successCondition:  len(result) == 0 || result[0] > 0.90
+    provider:
+      prometheus:
+        address: http://prometheus.istio-system:9090
+        query: |
+          sum(
+            irate(istio_requests_total{ destination_service="{{args.service}}.visa.svc.cluster.local", response_code!~"[4-5].*"}[30s])>0
+          )
+          /
+          sum(
+            irate(istio_requests_total{ destination_service="{{args.service}}.visa.svc.cluster.local"}[30s])>0
+          )

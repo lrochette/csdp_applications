@@ -1,0 +1,33 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: visa-gw
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "lr5.support.cf-cd.com"
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: canary
+spec:
+  hosts:
+  - "lr5.support.cf-cd.com"
+  gateways:
+  - visa-gw
+  http:
+  - match:
+    - uri:
+        prefix: /simple-canary
+    route:
+    - destination:
+        host:  simple-canary.visa.svc.cluster.local
+        port:
+          number: 80

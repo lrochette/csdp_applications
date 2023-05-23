@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: visa
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: bookinfo

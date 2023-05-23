@@ -1,0 +1,18 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- ratings/deployment.yaml
+- ratings/rating.service.yaml
+- ratings/ratings.sa.yaml
+- details/service.yaml
+- details/details.sa.yaml
+- details/details.deployment.yaml
+- product/sa.yaml
+- product/deployment.yaml
+- product/svc.yaml
+- reviews/sa.yaml
+- reviews/deployment.yaml
+- reviews/service.yaml
+#- github.com/istio/istio/samples/bookinfo/gateway-api/bookinfo-gateway.yaml?ref=master
+#- github.com/istio/istio/samples/bookinfo/platform/kube/bookinfo-versions.yaml?ref=master

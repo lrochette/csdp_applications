@@ -1,0 +1,82 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: canary-ro
+spec:
+  replicas: 3
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: canary-ro
+  template:
+    metadata:
+      labels:
+        app: canary-ro
+    spec:
+      containers:
+      - name: canary-ro
+        image: argoproj/rollouts-demo:red
+        # image: argoproj/rollouts-demo:blue
+        # image: argoproj/rollouts-demo:green
+        # image: argoproj/rollouts-demo:yellow
+        # image: argoproj/rollouts-demo:purple
+        # image: argoproj/rollouts-demo:orange
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 5m
+            memory: 32Mi
+  strategy:
+    canary:
+      # analysis:
+      #   templates:
+      #   - templateName: success-rate
+      #   args:
+      #   - name: service  ## Service's Internal DNS record
+      #     value: canary-ro-preview.visa.svc.cluster.local
+      #  startingStep: 2  ## Step index of the `steps` array. Index starts on zero.
+      stableService: canary-ro
+      canaryService: canary-ro-preview
+      trafficRouting:
+        istio:
+          virtualService:
+            name: canary-ro  # required
+            routes:
+            - primary
+      steps:
+      - setWeight: 20
+      - pause: {duration: 30s} ## Wait for the first pod to start
+      - analysis:
+          templates:
+          - templateName: skywalking
+          args:
+          - name: service-name  ## Service's Internal DNS record
+            value: "canary-ro-preview"
+      - setWeight: 40
+      - pause: {duration: 30s}
+      - analysis:
+          templates:
+          - templateName: success-rate
+          args:
+          - name: service  ## Service's Internal DNS record
+            value: canary-ro-preview
+      - setWeight: 60
+      - pause: {duration: 30s}
+      - analysis:
+          templates:
+          - templateName: success-rate
+          args:
+          - name: service  ## Service's Internal DNS record
+            value: canary-ro-preview
+      - setWeight: 80
+      - pause: {duration: 30s}
+      - analysis:
+          templates:
+          - templateName: success-rate
+          args:
+          - name: service  ## Service's Internal DNS record
+            value: canary-ro-preview

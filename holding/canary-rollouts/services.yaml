@@ -1,0 +1,27 @@
+## Main Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: canary-ro
+spec:
+  ports:
+  - port: 80
+    targetPort: http
+    protocol: TCP
+    name: http
+  selector:
+    app: canary-ro
+---
+## Canary Service (preview)
+apiVersion: v1
+kind: Service
+metadata:
+  name: canary-ro-preview
+spec:
+  ports:
+  - port: 80
+    targetPort: http
+    protocol: TCP
+    name: http
+  selector:
+    app: canary-ro

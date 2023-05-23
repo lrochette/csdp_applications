@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AnalysisTemplate
+metadata:
+  name: skywalking
+spec:
+  args:
+  - name: service-name  ## Service's Internal DNS record. E.g.: "canary-rollouts-demo".
+  metrics:
+  - name: skywalking
+    failureLimit: 5    ## If there are 4 or more failures, the Analysis Run is marked as Failed.
+    interval: 15s      ## This metric will be executed indefinitely every 15 seconds.
+    count: 12          ## This metric will be executed 5 times only
+    successCondition: "all(result.service_canary.values.values, {asFloat(.value) >= 9900})"
+    provider:
+      skywalking:
+        interval: 3m
+        address: http://skywalking-skywalking-helm-oap.skywalking:12800
+        query: |
+          query queryData($duration: Duration!) {
+            service_canary: readMetricsValues(
+              condition: { name: "service_canary", entity: { scope: Service, serviceName: "{{ args.service-name }}", normal: true } },
+              duration: $duration) {
+                label values { values { value } }
+              }
+          }
