@@ -10,7 +10,7 @@ metadata:
 spec:
   destination:
     namespace: dev
-    name: gke
+    server: https://kubernetes.default.svc
   project: dev
   source:
     path: ./kustomize/gke-rollout/
