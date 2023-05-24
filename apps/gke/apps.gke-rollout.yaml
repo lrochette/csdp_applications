@@ -9,9 +9,9 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: dev
+    namespace: default
     server: https://kubernetes.default.svc
-  project: dev
+  project: default
   source:
     path: ./kustomize/gke-rollout/
     repoURL: https://github.com/lrochette/csdp_applications.git
