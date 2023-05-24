@@ -25,11 +25,11 @@ spec:
   revisionHistoryLimit: 2
   selector:
     matchLabels:
-      app: rollouts-demo
+      app: gke-rollout
   template:
     metadata:
       labels:
-        app: rollouts-demo
+        app: gke-rollout
     spec:
       containers:
         - name: rollouts-demo
