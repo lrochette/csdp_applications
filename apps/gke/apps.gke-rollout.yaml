@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: gke-rollout
-  namespace: csdp
+  namespace: gke-csdp
   labels:
     app: gke-rollout
   finalizers:
