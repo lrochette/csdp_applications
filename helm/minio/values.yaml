@@ -26,7 +26,7 @@ defaultBuckets: []
 persistence:
   enabled: true
   # Volume size
-  size: 8Gi
+  size: 1Gi
 
 
 serviceAccount:
