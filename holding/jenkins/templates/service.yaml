@@ -3,12 +3,13 @@ kind: Service
 metadata:
   labels:
     app: jenkins
-  name: {{ .Release.Name }}-{{ .Chart.Name}}
+  name:  {{ template "jenkins.fullname" . }}
 spec:
-  type: NodePort
+  type: {{ .Values.service.type }}
   ports:
     - name: http
       port: 8080
-      nodePort: 30080
+      targetPort: http
+      nodePort: {{ .Values.service.nodePort }}
   selector:
     app: jenkins

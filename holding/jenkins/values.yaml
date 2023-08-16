@@ -1,5 +1,13 @@
 image:
   repository: bitnami/jenkins
   tag: 2.249.2
-jenkins:
-  jenkinsUsername: "aaaa"
+jenkinsUsername: ""
+jenkinsPassword: ""
+
+containerPorts:
+  - name: http
+    port: 8080
+
+service:
+  type: NodePort
+  nodePort: 30080
