@@ -25,7 +25,7 @@ spec:
         namespace: workflow
       syncPolicy:
         syncOptions:
-        - createNamespace=true
+        - CreateNamespace=true
         automated:
           prune: true
           selfHeal: true
