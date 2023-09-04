@@ -9,3 +9,16 @@ metadata:
 spec:
   finalizers:
   - kubernetes
+--
+apiVersion: v1
+kind: Namespace
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: Prune=true
+  labels:
+    kubernetes.io/metadata.name: other
+  name: other
+spec:
+  finalizers:
+  - kubernetes
+--
