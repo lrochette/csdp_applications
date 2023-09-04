@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: color-dev
+  namespace: other
+  labels:
+    app: color
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: dev
+    name: in-cluster
+  project: dev
+  source:
+    path: ./kustomize/color/overlays/dev
+    repoURL: https://github.com/lrochette/csdp_applications.git
+    targetRevision: main
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
