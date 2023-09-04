@@ -21,4 +21,3 @@ metadata:
 spec:
   finalizers:
   - kubernetes
---
