@@ -15,7 +15,7 @@ spec:
     spec:
       project: security # project is restricted
       source:
-        targetRevision: {{app.revision}}
+        targetRevision: "{{app.revision}}"
         path: {{app.subfolder}}
         repoURL: {{app.src}}
       destination:
