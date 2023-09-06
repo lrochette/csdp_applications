@@ -8,7 +8,7 @@ spec:
       repoURL: https://github.com/lrochette/csdp_applications.git
       revision: HEAD
       files:
-      - path: "appset/*/config.json"
+      - path: "appset/**/config.json"
   template:
     spec:
       project: security # project is restricted
