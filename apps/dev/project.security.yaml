@@ -20,5 +20,5 @@ spec:
   - group: '*'
     kind: '*'
   sourceRepos:
-  - 'https://github.com/lrochette/csdp_applications/apps/dev/*'
+  - 'https://github.com/lrochette/csdp_applications/tree/main/apps/dev'
 status: {}
