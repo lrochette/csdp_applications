@@ -20,6 +20,6 @@ spec:
   - group: '*'
     kind: '*'
   sourceRepos:
-    -: '*'
+    - '*'
   #- 'https://github.com/lrochette/csdp_applications/apps/dev'
 status: {}
