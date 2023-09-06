@@ -6,7 +6,7 @@ metadata:
     argocd.argoproj.io/sync-options: PruneLast=true
     argocd.argoproj.io/sync-wave: "-2"
   creationTimestamp: null
-  name: dev
+  name: security
   namespace: csdp
 spec:
   clusterResourceWhitelist:
@@ -14,11 +14,11 @@ spec:
     kind: '*'
   description: dev project to simulate dev environment
   destinations:
-  - namespace: '*'
+  - namespace: 'dev'
     server: '*'
   namespaceResourceWhitelist:
   - group: '*'
     kind: '*'
   sourceRepos:
-  - '*'
+  - 'https://github.com/lrochette/csdp_applications/apps/none'
 status: {}
