@@ -16,7 +16,7 @@ spec:
       project: security # project is restricted
       source:
         # developers may customize app details using JSON files from above repo URL
-        repoURL: {{app.source}}
+        repoURL: {{app.src}}
         targetRevision: {{app.revision}}
         path: {{app.subfolder}}
       destination:
