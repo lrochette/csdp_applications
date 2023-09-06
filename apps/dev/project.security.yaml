@@ -14,11 +14,12 @@ spec:
     kind: '*'
   description: dev project to simulate dev environment
   destinations:
-  - namespace: 'dev'
+  - namespace: 'other'
     server: '*'
   namespaceResourceWhitelist:
   - group: '*'
     kind: '*'
   sourceRepos:
-  - 'https://github.com/lrochette/csdp_applications/apps/dev'
+    -: '*'
+  #- 'https://github.com/lrochette/csdp_applications/apps/dev'
 status: {}
