@@ -1,7 +1,7 @@
 {
   "app": {
-    #"source": "https://github.com/lrochette/csdp_applications.git",
+    "source": "https://github.com/lrochette/csdp_applications.git",
     "revision": "main",
-    "path": "kustomize/color/overlays/dev"
+    "subfolder": "kustomize/color/overlays/dev"
   }
 }

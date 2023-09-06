@@ -18,7 +18,7 @@ spec:
         # developers may customize app details using JSON files from above repo URL
         repoURL: {{app.source}}
         targetRevision: {{app.revision}}
-        path: {{app.path}}
+        path: {{app.subfolder}}
       destination:
         name: in-cluster # cluster is restricted
         namespace: other # namespace is restricted
