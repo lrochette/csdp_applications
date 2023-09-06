@@ -20,3 +20,9 @@ spec:
       destination:
         name: in-cluster # cluster is restricted
         namespace: other # namespace is restricted
+      syncPolicy:
+        syncOptions:
+        - CreateNamespace=true
+        automated:
+          prune: true
+          selfHeal: true
