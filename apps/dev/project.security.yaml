@@ -12,7 +12,7 @@ spec:
   clusterResourceWhitelist:
   - group: '*'
     kind: '*'
-  description: decurity project to simulate a restricted environment
+  description: security project to simulate a restricted environment
   destinations:
   - namespace: 'other'
     server: '*'
