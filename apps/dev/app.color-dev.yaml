@@ -11,7 +11,7 @@ spec:
   destination:
     namespace: dev
     server: https://kubernetes.default.svc
-  project: security
+  project: dev
   source:
     path: ./kustomize/color/overlays/dev
     repoURL: https://github.com/lrochette/csdp_applications.git
