@@ -17,7 +17,7 @@ spec:
           image: bitnami/jenkins:2.249.2
           env:
             - name: JENKINS_OPT
-              value: --prefix=/jenkins
+              value: "--prefix=/jenkins  --httpListenAddress=0.0.0.0"
             - name: JENKINS_USERNAME
               value: "codefresh"
             - name: JENKINS_PASSWORD
@@ -28,3 +28,19 @@ spec:
           ports:
             - name: http
               containerPort: 8080
+          livenessProbe:
+            httpGet:
+              path: "/jenkins/login"
+              port: 8080
+            initialDelaySeconds: 90
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 5
+          readinessProbe:
+            httpGet:
+              path: "/jenkins/login"
+              port: 8080
+            initialDelaySeconds: 60
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
