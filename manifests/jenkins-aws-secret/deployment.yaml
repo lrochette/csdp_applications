@@ -16,8 +16,8 @@ spec:
         - name: jenkins
           image: bitnami/jenkins:2.249.2
           env:
-            - name: JENKINS_OPT
-              value: "--prefix=/jenkins  --httpListenAddress=0.0.0.0"
+            - name: JENKINS_OPTS
+              value: "--prefix=/jenkins --httpListenAddress=0.0.0.0"
             - name: JENKINS_USERNAME
               value: "codefresh"
             - name: JENKINS_PASSWORD
