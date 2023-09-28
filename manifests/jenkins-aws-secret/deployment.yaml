@@ -16,6 +16,7 @@ spec:
         - name: jenkins
           image: bitnami/jenkins:2.249.2
           env:
+            - name: URL=https://lrcsdp.support.cf-cd.com/jenkins
             - name: JENKINS_USERNAME
               value: "codefresh"
             - name: JENKINS_PASSWORD
