@@ -7,13 +7,15 @@ spec:
   - list:
       elements:
       - cluster: in-cluster
+        name: w1
         url: https://A7F0B51A0AA159E93D55D2A438A7052D.gr7.us-east-1.eks.amazonaws.com
       - cluster: main
+        name: w2
         url: https://B8D1E54206772D2AC7CC62D992BA3642.gr7.us-east-1.eks.amazonaws.com
   template:
     metadata:
       #name: '{{cluster}}-workflow'
-      name: precisely
+      name: '{{name}}'
     spec:
       project: default
       source:
