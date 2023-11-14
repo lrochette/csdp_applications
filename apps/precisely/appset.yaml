@@ -14,7 +14,7 @@ spec:
     metadata:
       name: '{{cluster}}-workflow'
     spec:
-      project: wkf
+      project: default
       source:
         repoURL: https://github.com/lrochette/csdp_infra.git
         targetRevision: main
