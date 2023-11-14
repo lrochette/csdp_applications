@@ -12,7 +12,8 @@ spec:
         url: https://B8D1E54206772D2AC7CC62D992BA3642.gr7.us-east-1.eks.amazonaws.com
   template:
     metadata:
-      name: '{{cluster}}-workflow'
+      #name: '{{cluster}}-workflow'
+      name: precisely
     spec:
       project: default
       source:
