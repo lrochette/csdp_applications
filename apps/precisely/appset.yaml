@@ -6,7 +6,7 @@ spec:
   generators:
   - list:
       elements:
-      - cluster: csdp
+      - cluster: in-cluster
         url: https://A7F0B51A0AA159E93D55D2A438A7052D.gr7.us-east-1.eks.amazonaws.com
       - cluster: main
         url: https://B8D1E54206772D2AC7CC62D992BA3642.gr7.us-east-1.eks.amazonaws.com
