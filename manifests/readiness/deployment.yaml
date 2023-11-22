@@ -4,6 +4,7 @@ metadata:
   name: readiness
   namespace: dev
 spec:
+  replicas: 3
   selector:
     matchLabels:
       app.kubernetes.io/name: readiness
