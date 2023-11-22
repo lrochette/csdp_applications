@@ -1,42 +1,29 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: readiness
-  namespace: dev
+  labels:
+    app: color
+  name: color
 spec:
-  replicas: 3
+  revisionHistoryLimit: 3
+  replicas: 2
   selector:
     matchLabels:
-      app.kubernetes.io/name: readiness
+      app: color
   template:
     metadata:
-      annotations:
-        admission.datadoghq.com/python-lib.version: v1.18.4
       labels:
-        app.kubernetes.io/name: readiness
-
+        app: color
     spec:
       containers:
-        - name: liveness-probe
-          image: registry.k8s.io/liveness
+        - name: color
+          image: lrochette/color:yellow
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
 
-          args:
-          - /server
-          livenessProbe:
-            httpGet:
-              path: /healthz
-              port: 8080
-              httpHeaders:
-              - name: Custom-Header
-                value: Awesome
-            initialDelaySeconds: 3
-            periodSeconds: 3
           readinessProbe:
             httpGet:
-              path: /healthz
-              port: 8080
-              httpHeaders:
-              - name: Custom-Header
-                value: Awesome
+              port: 80
             initialDelaySeconds: 3
             periodSeconds: 3
