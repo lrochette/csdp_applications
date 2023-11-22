@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: color
-          image: lrochette/color:yellow
+          image: lrochette/color:blue
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
@@ -25,6 +25,6 @@ spec:
           readinessProbe:
             httpGet:
               path: /
-              port: 8080
+              port: junk
             initialDelaySeconds: 3
             periodSeconds: 3
