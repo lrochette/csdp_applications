@@ -16,7 +16,7 @@ spec:
 
     spec:
       containers:
-        - name: livenessProbe
+        - name: liveness-probe
           image: registry.k8s.io/busybox
           args:
           - /bin/sh
