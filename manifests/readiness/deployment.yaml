@@ -32,6 +32,7 @@ spec:
           readinessProbe:
             exec:
               command:
+              - exit 1
               - cat
               - /tmp/healthy
             initialDelaySeconds: 5
