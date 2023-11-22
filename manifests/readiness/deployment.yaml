@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: readiness
+  namespace: dev
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: readiness
+  template:
+    metadata:
+      annotations:
+        admission.datadoghq.com/python-lib.version: v1.18.4
+      labels:
+        app.kubernetes.io/name: readiness
+
+    spec:
+      containers:
+        - name: livenessProbe
+          image: registry.k8s.io/busybox
+          args:
+          - /bin/sh
+          - -c
+          - touch /tmp/healthy; sleep 30; rm -f /tmp/healthy; sleep 600
+          livenessProbe:
+            exec:
+              command:
+              - cat
+              - /tmp/healthy
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          readinessProbe:
+            exec:
+              command:
+              - cat
+              - /tmp/healthy
+            initialDelaySeconds: 5
+            periodSeconds: 5
