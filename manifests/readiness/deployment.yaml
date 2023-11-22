@@ -6,7 +6,7 @@ metadata:
   name: readiness
 spec:
   revisionHistoryLimit: 3
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
       app: readiness
