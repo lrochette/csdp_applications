@@ -25,6 +25,6 @@ spec:
           readinessProbe:
             httpGet:
               path: /
-              port: junk
+              port: 8080
             initialDelaySeconds: 3
             periodSeconds: 3
