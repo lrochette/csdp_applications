@@ -18,23 +18,25 @@ spec:
     spec:
       containers:
         - name: liveness-probe
-          image: registry.k8s.io/busybox
+          image: registry.k8s.io/liveness
+
           args:
-          - /bin/sh
-          - -c
-          - touch /tmp/healthy; sleep 30; rm -f /tmp/healthy; sleep 600
+          - /server
           livenessProbe:
-            exec:
-              command:
-              - cat
-              - /tmp/healthy
-            initialDelaySeconds: 5
-            periodSeconds: 5
+            httpGet:
+              path: /healthz
+              port: 8080
+              httpHeaders:
+              - name: Custom-Header
+                value: Awesome
+            initialDelaySeconds: 3
+            periodSeconds: 3
           readinessProbe:
-            exec:
-              command:
-              #- exit 1
-              - cat
-              - /tmp/healthy
-            initialDelaySeconds: 5
-            periodSeconds: 5
+            httpGet:
+              path: /healthz
+              port: 8080
+              httpHeaders:
+              - name: Custom-Header
+                value: Awesome
+            initialDelaySeconds: 3
+            periodSeconds: 3
