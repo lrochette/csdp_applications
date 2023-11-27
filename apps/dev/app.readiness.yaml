@@ -7,6 +7,8 @@ metadata:
     app: readiness
   finalizers:
     - resources-finalizer.argocd.argoproj.io
+  annotations:
+    argocd.argoproj.io/manifest-generate-paths: /manifests/readiness
 spec:
   destination:
     namespace: dev

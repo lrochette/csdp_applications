@@ -7,6 +7,8 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
   labels:
     app: trio
+  annotations:
+    argocd.argoproj.io/manifest-generate-paths: /heml/trio-app
 spec:
   destination:
     namespace: trio-app

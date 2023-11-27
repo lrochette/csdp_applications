@@ -7,6 +7,8 @@ metadata:
     app: color
   finalizers:
     - resources-finalizer.argocd.argoproj.io
+  annotations:
+    argocd.argoproj.io/manifest-generate-paths: /kustomize/color
 spec:
   destination:
     namespace: dev
