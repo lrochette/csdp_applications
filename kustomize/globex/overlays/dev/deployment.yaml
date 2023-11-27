@@ -10,4 +10,4 @@ spec:
     spec:
       containers:
         - name: globex
-          image: lrochette/globex:1.7.23
+          image: lrochette/globex:1.7.24
