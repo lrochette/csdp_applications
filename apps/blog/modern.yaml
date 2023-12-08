@@ -7,6 +7,9 @@ metadata:
     app: multi
   finalizers:
     - resources-finalizer.argocd.argoproj.io
+  annotations:
+    argocd.argoproj.io/manifest-generate-paths: /manifests/modern
+
 spec:
   destination:
     namespace: modern
