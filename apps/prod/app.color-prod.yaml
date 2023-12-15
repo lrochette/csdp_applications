@@ -7,6 +7,9 @@ metadata:
     app: color
   finalizers:
     - resources-finalizer.argocd.argoproj.io
+  annotations:
+    codefresh.io/app-group: color
+    argocd.argoproj.io/manifest-generate-paths: /kustomize/color
 spec:
   destination:
     namespace: prod
