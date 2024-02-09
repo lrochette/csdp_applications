@@ -15,6 +15,9 @@ spec:
       labels:
         app: color
     spec:
+      nodeSelector:
+        kubernetes.io/os: linux    # specify the OS your step should run on
+        kubernetes.io/arch: amd64
       containers:
         - name: color
           image: lrochette/color:5b145d4
