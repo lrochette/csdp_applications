@@ -13,7 +13,7 @@ metadata:
 spec:
   destination:
     namespace: prod
-    name: lr3
+    server: https://kubernetes.default.svc
   project: prod
   source:
     path: ./kustomize/color/overlays/prod
