@@ -10,4 +10,4 @@ spec:
     name: http
   selector:
     app: canary-analysis
-  type: LoadBalancer
+  type: ClusterIP # LoadBalancer
