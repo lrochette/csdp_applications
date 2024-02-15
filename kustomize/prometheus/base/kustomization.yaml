@@ -7,7 +7,8 @@ resources:
 - grafana-ingress.yaml
 - prometheus-basic-auth.yaml
 - prometheus-ingress.yaml
-- github.com/prometheus-operator/kube-prometheus?ref=v0.9.0
+- github.com/prometheus-operator/kube-prometheus?ref=v0.13.0
+# - github.com/prometheus-operator/kube-prometheus?ref=v0.9.0
 
 patches:
 # Tell argocd to replace this CRD instead of apply to avoid annotation limit error
