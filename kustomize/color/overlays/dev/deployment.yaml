@@ -16,11 +16,11 @@ spec:
         app: color
     spec:
       nodeSelector:
-        kubernetes.io/os: linux    # specify the OS your step should run on
+        kubernetes.io/os: linux # specify the OS your step should run on
         kubernetes.io/arch: amd64
       containers:
         - name: color
-          image: lrochette/color:yellow
+          image: lrochette/color:red
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
