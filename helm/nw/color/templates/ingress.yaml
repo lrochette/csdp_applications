@@ -18,4 +18,4 @@ spec:
               service:
                 name: color-{{ $releaseName}}
                 port:
-                  number: {{ $svcPort }}
+                  number: {{ .Values.svcPort }} 
