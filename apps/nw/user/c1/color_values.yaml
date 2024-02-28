@@ -1,3 +1,4 @@
-svcPort: 81
+service:
+  port: 8081
 image:
   tag: "yellow"

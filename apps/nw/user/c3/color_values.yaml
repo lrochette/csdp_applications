@@ -1,1 +1,2 @@
-svcPort: 83
+service:
+  port: 8083

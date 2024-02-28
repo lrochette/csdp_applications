@@ -1,0 +1,4 @@
+# service:
+#   port: 8082
+# image:
+#   tag: "blue"
