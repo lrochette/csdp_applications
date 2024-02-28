@@ -1,1 +1,3 @@
 svcPort: 82
+image:
+  tag: "blue"
