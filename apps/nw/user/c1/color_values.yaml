@@ -2,3 +2,4 @@ service:
   port: 8081
 image:
   tag: "yellow"
+replicaCount: 2
