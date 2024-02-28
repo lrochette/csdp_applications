@@ -6,7 +6,7 @@ replicaCount: 1
 
 image:
   repository: lrochette/color
-  tag: "orange"
+  tag: "green"
 
 nameOverride: ""
 fullnameOverride: ""
