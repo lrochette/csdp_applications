@@ -10,7 +10,7 @@ spec:
   destination:
     namespace: csdp # temporarily set to Runtime namespace, CR-10565
     name: in-cluster
-  project: csdp-salesdemo-dev
+  project: dev
   source:
     path: ./kustomize/express-blue-green/overlays/dev
     repoURL: https://github.com/codefresh-contrib/csdp-salesdemo_applications.git
