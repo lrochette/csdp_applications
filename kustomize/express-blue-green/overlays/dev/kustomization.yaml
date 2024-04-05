@@ -22,8 +22,8 @@ patches:
           previewService: express-preview-bg
           prePromotionAnalysis:
             templates:
-              - templateName: pass-always-bg
-              - templateName: mixed-tests-bg
+              # - templateName: pass-always-bg
+              # - templateName: mixed-tests-bg
               - templateName: fail-always-bg
     - op: replace
       path: /spec/selector/matchLabels/app

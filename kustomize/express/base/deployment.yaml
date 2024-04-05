@@ -16,7 +16,8 @@ spec:
     spec:
       containers:
       - name: express-microservice
-        image: quay.io/codefresh_sa/express-microservice:3c23228
+        #image: quay.io/codefresh_sa/express-microservice:3c23228
+        image: quay.io/codefresh_sa/express-microservice:9ccb236
         ports:
         - containerPort: 3000
       imagePullSecrets:
