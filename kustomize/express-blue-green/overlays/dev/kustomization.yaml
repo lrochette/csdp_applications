@@ -24,6 +24,7 @@ patches:
             templates:
               - templateName: pass-always-bg
               - templateName: mixed-tests-bg
+              - templateName: fail-always
     - op: replace
       path: /spec/selector/matchLabels/app
       value: express-microservice-bg
