@@ -8,12 +8,12 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: csdp # temporarily set to Runtime namespace, CR-10565
+    namespace: dev # temporarily set to Runtime namespace, CR-10565
     name: in-cluster
   project: dev
   source:
     path: ./kustomize/express-blue-green/overlays/dev
-    repoURL: https://github.com/codefresh-contrib/csdp-salesdemo_applications.git
+    repoURL: https://github.com/lrochette/csdp_applications.git
       # https://github.com/lrochette/csdp_applications.git
     targetRevision: main
   syncPolicy:
