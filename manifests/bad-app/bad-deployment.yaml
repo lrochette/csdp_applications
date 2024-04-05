@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bad-app
+  labels:
+    app: bad-app
+spec:
+  selector:
+    matchLabels:
+      app: bad-app
+  template:
+    metadata:
+      containers:
+      - env:
+        - name: FOO
+          value: bar
+        image_spell: alpine:3.14
+        name: mysql
