@@ -1,0 +1,44 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  labels:
+    app: bad-canary
+  name: bad-canary
+  namespace: dev
+spec:
+  replicas: 4
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: bad-canary
+  template:
+    metadata:
+      labels:
+        app: bad-canary
+    spec:
+      containers:
+      - name: bad-canary
+        image: argoproj/rollouts-demo:red
+        #image: argoproj/rollouts-demo:orange
+        #image: argoproj/rollouts-demo:yellow
+        #image: argoproj/rollouts-demo:green
+        #image: argoproj/rollouts-demo:blue
+        #image: argoproj/rollouts-demo:purple
+        imagePullPolicy: Always
+        ports:
+        - name: http
+          containerPort: 8080
+          protocol: TCP
+        resources:
+          requests:
+            memory: 32Mi
+            cpu: 5m
+  strategy:
+    canary:
+      stableService: bad-canary-active
+      canaryService: bad-canary-preview
+      steps:
+      - setWeight: 20
+      - analysis:
+          templates:
+            - templateName: fail-always

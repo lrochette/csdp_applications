@@ -1,13 +1,13 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: bad-bg
+  name: bad-canary
   labels:
-    app: bad-bg
+    app: bad-canary
   finalizers:
     - resources-finalizer.argocd.argoproj.io
   annotations:
-    argocd.argoproj.io/manifest-generate-paths: /manifests/bad-bg
+    argocd.argoproj.io/manifest-generate-paths: /manifests/bad-canary
     codefresh.io/app-group: training
 spec:
   destination:
@@ -15,7 +15,7 @@ spec:
     name: in-cluster
   project: dev
   source:
-    path: ./manifests/bad-bg/
+    path: ./manifests/bad-canary/
 
     repoURL: https://github.com/lrochette/csdp_applications.git
       # https://github.com/lrochette/csdp_applications.git

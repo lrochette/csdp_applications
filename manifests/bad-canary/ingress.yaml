@@ -4,8 +4,8 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
   labels:
-    app: bad-bg
-  name: bad-bg-ingress-preview
+    app: bad-canary
+  name: bad-canary-ingress-stable
   namespace: dev
 spec:
   ingressClassName: nginx
@@ -14,8 +14,8 @@ spec:
       paths:
       - backend:
           service:
-            name: bad-bg-preview
+            name: bad-canary-active
             port:
               number: 3000
-        path: /bad-bg-preview
+        path: /bad-canary
         pathType: ImplementationSpecific

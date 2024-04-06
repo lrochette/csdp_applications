@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: AnalysisTemplate
 metadata:
   labels:
-    app: bad-bg
+    app: bad-canary
   name: fail-always
   namespace: dev
 spec:
