@@ -1,4 +1,3 @@
-
 kind: AnalysisTemplate
 apiVersion: argoproj.io/v1alpha1
 metadata:
