@@ -39,6 +39,18 @@ spec:
       canaryService: bad-canary-preview
       steps:
       - setWeight: 20
+      - pause: {duration: 5}
+      - analysis:
+          templates:
+            - templateName: pass-always
+
+      - setWeight: 40
+      - pause: {duration: 5}
+      - setWeight: 60
+      - pause: {duration: 5}
+      - setWeight: 80
       - analysis:
           templates:
             - templateName: fail-always
+      - pause: {duration: 5}
+      - setWeight: 100
