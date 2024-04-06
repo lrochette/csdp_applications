@@ -1,0 +1,79 @@
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  labels:
+    app: express-microservice-bg
+  name: express-microservice-bg
+  namespace: dev
+spec:
+  minReadySeconds: 30
+  replicas: 4
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: express-microservice-bg
+  strategy:
+    blueGreen:
+      activeService: express-active-bg
+      prePromotionAnalysis:
+        templates:
+        - templateName: fail-always-bg
+      previewService: express-preview-bg
+  template:
+    metadata:
+      labels:
+        app: express-microservice-bg
+    spec:
+      containers:
+      - image: quay.io/codefresh_sa/express-microservice:fc94a48
+        name: express-microservice
+        ports:
+        - containerPort: 3000
+      imagePullSecrets:
+      - name: quay-regcred
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  labels:
+    app: express-microservice-bg
+  name: express-preview-ingress-bg
+  namespace: dev
+spec:
+  ingressClassName: nginx
+  rules:
+  - http:
+      paths:
+      - backend:
+          service:
+            name: express-preview-bg
+            port:
+              number: 3000
+        path: /express-preview-bg
+        pathType: ImplementationSpecific
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  labels:
+    app: express-microservice-bg
+  name: express-stable-ingress-bg
+  namespace: dev
+spec:
+  ingressClassName: nginx
+  rules:
+  - http:
+      paths:
+      - backend:
+          service:
+            name: express-active-bg
+            port:
+              number: 3000
+        path: /express-bg
+        pathType: ImplementationSpecific

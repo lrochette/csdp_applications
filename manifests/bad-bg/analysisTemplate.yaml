@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AnalysisTemplate
+metadata:
+  labels:
+    app: bad-bg
+  name: fail-always
+  namespace: dev
+spec:
+  metrics:
+  - count: 5
+    failureLimit: 1
+    interval: 5s
+    name: fail-1
+    provider:
+      job:
+        spec:
+          backoffLimit: 0
+          template:
+            spec:
+              containers:
+              - args:
+                - exit 1
+                command:
+                - sh
+                - -c
+                image: alpine:3.8
+                name: sleep
+              restartPolicy: Never

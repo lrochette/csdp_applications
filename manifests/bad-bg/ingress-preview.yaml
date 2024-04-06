@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  labels:
+    app: bad-bg
+  name: bad-bg-ingress-preview
+  namespace: dev
+spec:
+  ingressClassName: nginx
+  rules:
+  - http:
+      paths:
+      - backend:
+          service:
+            name: bad-bg-preview
+            port:
+              number: 3000
+        path: /bad-bg-preview
+        pathType: ImplementationSpecific

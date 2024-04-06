@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  labels:
+    app: bad-bg
+  name: bad-bg
+  namespace: dev
+spec:
+  minReadySeconds: 30
+  replicas: 4
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: bad-bg
+  strategy:
+    blueGreen:
+      activeService: bad-bg-active
+      prePromotionAnalysis:
+        templates:
+        - templateName: fail-always
+      previewService: bad-bg-preview
+  template:
+    metadata:
+      labels:
+        app: bad-bg
+    spec:
+      containers:
+      - image: quay.io/codefresh_sa/express-microservice:fc94a48
+        name: express-microservice
+        ports:
+        - containerPort: 3000
+      imagePullSecrets:
+      - name: quay-regcred
