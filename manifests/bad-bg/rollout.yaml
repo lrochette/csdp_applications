@@ -13,12 +13,14 @@ spec:
     matchLabels:
       app: bad-bg
   strategy:
-    blueGreen:
-      activeService: bad-bg-active
-      prePromotionAnalysis:
-        templates:
-        - templateName: fail-always
-      previewService: bad-bg-preview
+    canary:
+      stableService: bad-bg-active
+      canaryService: bad-bg-preview
+      steps:
+      - setWeight: 20
+      - analysis:
+          templates:
+            - templateName: fail-always
   template:
     metadata:
       labels:
