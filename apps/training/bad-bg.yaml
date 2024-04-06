@@ -6,6 +6,9 @@ metadata:
     app: bad-bg
   finalizers:
     - resources-finalizer.argocd.argoproj.io
+  annotations:
+    argocd.argoproj.io/manifest-generate-paths: /manifests/bad-bg
+    codefresh.io/app-group: training
 spec:
   destination:
     namespace: dev # temporarily set to Runtime namespace, CR-10565

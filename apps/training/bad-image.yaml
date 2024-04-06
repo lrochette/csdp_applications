@@ -9,6 +9,7 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
   annotations:
     argocd.argoproj.io/manifest-generate-paths: /manifests/bad-image
+    codefresh.io/app-group: training
 spec:
   destination:
     namespace: default
