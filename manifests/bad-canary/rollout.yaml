@@ -18,8 +18,8 @@ spec:
     spec:
       containers:
       - name: bad-canary
-        image: argoproj/rollouts-demo:red
-        #image: argoproj/rollouts-demo:orange
+        #image: argoproj/rollouts-demo:red
+        image: argoproj/rollouts-demo:orange
         #image: argoproj/rollouts-demo:yellow
         #image: argoproj/rollouts-demo:green
         #image: argoproj/rollouts-demo:blue
@@ -43,7 +43,6 @@ spec:
       - analysis:
           templates:
             - templateName: pass-always
-
       - setWeight: 40
       - pause: {duration: 5}
       - setWeight: 60
