@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: notifications
+  namespace: csdp
+  annotations:
+    codefresh.io/app-group: infra
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+
+spec:
+  project: default
+  source:
+    repoURL: https://argoproj.github.io/argo-helm
+    targetRevision: HEAD
+    path: 'argo/argocd-notifications'
+    helm:
+      releaseName: "v1.21"
+      # valueFiles:
+      #     - values.yaml
+      #     - /apps/nw/user/{{.appName}}/color_values.yaml
+      #     - compulsory.yaml
+      # # Ignore locally missing valueFiles when installing Helm chart. Defaults to false
+      # ignoreMissingValueFiles: true
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: csdp
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
