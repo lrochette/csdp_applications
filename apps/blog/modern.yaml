@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: modern-multi-svc
-  # namespace: csdp
+  namespace: csdp
   labels:
     app: multi
   finalizers:
